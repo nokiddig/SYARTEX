@@ -1,0 +1,12 @@
+{
+  "helpWrap": "（{text}）",
+  "saved": "已保存",
+  "savedWithTail": "已保存（尾号 {tail}）",
+  "maskedHint": "· 填入新值即覆盖，清空则删除该项",
+  "allFindings": "全部漏洞",
+  "includeWords": "类型含 {count} 词",
+  "excludeWords": "排除 {count} 词",
+  "taskCount": "{count} 个任务",
+  "assetCount": "{count} 个资产",
+  "statusChange": "含状态变更"
+}

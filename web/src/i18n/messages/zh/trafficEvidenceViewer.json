@@ -1,0 +1,13 @@
+{
+  "evidenceTitle": "流量证据 #{id}",
+  "defaultDescription": "查看绑定时保存的请求与响应",
+  "requestTab": "请求 Request",
+  "responseTab": "响应 Response",
+  "bodySize": "正文 {size} 字节",
+  "previewSuffix": " · 当前为预览",
+  "downloadRequestBody": "下载完整请求正文",
+  "downloadResponseBody": "下载完整响应正文",
+  "loadMoreBody": "加载更多正文",
+  "previewTitle": "预览流量",
+  "previewDescription": "流量 ID：{id}。绑定时会保存完整正文。"
+}

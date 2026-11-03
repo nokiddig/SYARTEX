@@ -1,0 +1,61 @@
+{
+  "checkingStatus": "Checking login status…",
+  "connectError": "Unable to connect to the backend service",
+  "agreeRequired": "Please read and agree to the Terms of Use first",
+  "wrongCredentials": "Incorrect username or password",
+  "heading": "Sign in",
+  "subtitle": "Welcome back, please enter your password to continue using ARTEX",
+  "usernameLabel": "Username",
+  "passwordLabel": "Password",
+  "passwordPlaceholder": "Enter your password",
+  "agreeTermsPrefix": "I have read and agree to the",
+  "termsLinkText": "Terms of Use",
+  "loggingIn": "Signing in...",
+  "loginButton": "Sign in",
+  "termsDialogTitle": "ARTEX Terms of Use and Disclaimer",
+  "termsVersionLine": "Version v1.0 · Effective date 2026-09-18 · Please read all of the following terms in full before logging in",
+  "scrolledAll": "You have reviewed all terms",
+  "scrollToBottomPrompt": "Please scroll the terms to the bottom before confirming",
+  "agreeAllButton": "I have read and agree to all terms",
+  "terms": {
+    "intro": "This Terms of Use and Disclaimer (\"this Statement\") is the agreement between you and the ARTEX project author and contributors regarding the use of this software. Please read it carefully and fully understand each clause before use, especially the disclaimer, liability limitation, and prohibition clauses marked in bold or highlighted blocks.",
+    "introEmphasis": "Once you download, install, access, or use this software in any way, you are deemed to have read, understood, and agreed to be fully bound by this Statement.",
+    "section1": {
+      "heading": "Article 1 · Definitions and Open-Source License",
+      "body": "This software (ARTEX) is an open-source program released under the GNU Affero General Public License v3.0 (AGPL-3.0). You may freely use, copy, modify, and distribute this software under that license; however, any derivative work (including an online service provided to third parties over a network) must likewise be open-sourced under the AGPL-3.0 license, with the corresponding complete source code made available to users. The full terms of the AGPL-3.0 govern, as set out in the accompanying LICENSE file."
+    },
+    "section2": {
+      "heading": "Article 2 · Scope of Authorized Use",
+      "body": "This software is intended solely for personal learning, code research, discussion of security technical principles, and technical verification within a locally isolated environment that you set up yourself — for non-offensive, non-destructive purposes such as study, academic research, and code review. Except as expressly permitted in this Article, you may not use this software for any other purpose."
+    },
+    "section3": {
+      "heading": "Article 3 · Prohibited Conduct",
+      "item1": "You must not scan, probe, exploit, or attack any website, online service, or internet-connected system owned by others or third parties (whether or not authorized, and whether or not it is your own asset);",
+      "item2": "You must not use this software for any actual penetration testing, red/blue team exercises, or production environment;",
+      "item3": "You must not use this software for illegal intrusion, data theft, extortion, denial of service (DoS/DDoS), or any other destructive or criminal activity;",
+      "item4": "You must not remove, alter, or circumvent any copyright, license, or security notice in this software or its output;",
+      "item5": "You must not engage in any conduct that violates the laws, regulations, or regulatory requirements of your country or region."
+    },
+    "section4": {
+      "heading": "Article 4 · Intellectual Property",
+      "body": "The copyright and related intellectual property rights in this software belong to the project author and contributors, and are granted to you within the scope agreed under the AGPL-3.0 license. Except for the rights expressly granted under that license, this Statement does not grant you any other rights, whether express or implied."
+    },
+    "section5": {
+      "heading": "Article 5 · Data and Privacy",
+      "body": "This software is a self-hostable open-source program; the author does not operate any centralized service and does not collect or upload your usage data. All data you generate, process, or encounter while using this software is under your own control, and you are responsible for its legality and security; any consequences arising from improper handling of data are borne solely by you."
+    },
+    "section6": {
+      "heading": "Article 6 · Compliance and Legal Liability",
+      "body": "You must comply on your own with all laws and regulations in your country or region concerning cybersecurity, data security, personal information protection, computer crime, and similar matters (in mainland China, this includes but is not limited to the Cybersecurity Law, the Data Security Law, the Personal Information Protection Law, and related judicial interpretations).",
+      "bodyEmphasis": "Any legal liability or consequences arising from your violation of the above laws and regulations or of this Statement are borne solely and independently by you, and are unrelated to the author and contributors of this software."
+    },
+    "section7": {
+      "heading": "Article 7 · Disclaimer and Limitation of Liability",
+      "body": "This software is provided \"AS IS\" and \"AS AVAILABLE\", without any warranty of any kind, express or implied, including but not limited to warranties of merchantability, fitness for a particular purpose, accuracy, and non-infringement. To the maximum extent permitted by applicable law, the author and contributors of this software are not liable for any direct, indirect, incidental, special, or consequential loss arising from the use or inability to use this software (regardless of whether the use was proper), including but not limited to data loss, system damage, business interruption, loss of profit, or legal disputes."
+    },
+    "section8": {
+      "heading": "Article 8 · Changes to the Terms and Final Interpretation",
+      "body": "The author reserves the right to update this Statement from time to time based on laws, regulations, or project needs; the updated version takes effect upon release with the project. Your continued use of this software constitutes acceptance of the revised terms. To the extent permitted by law, the project author retains the final right of interpretation of this Statement. If any clause of this Statement is held invalid, it does not affect the validity of the remaining clauses."
+    }
+  }
+}

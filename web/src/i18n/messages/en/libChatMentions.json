@@ -1,0 +1,11 @@
+{
+  "finding": "Finding",
+  "asset": "Asset",
+  "company": "Company",
+  "endpoint": "Endpoint",
+  "ip": "IP",
+  "app": "App",
+  "root_domain": "Domain",
+  "subdomain": "Subdomain",
+  "service": "Service"
+}

@@ -1,0 +1,13 @@
+{
+  "evidenceTitle": "Traffic evidence #{id}",
+  "defaultDescription": "View the request and response saved at binding time",
+  "requestTab": "Request",
+  "responseTab": "Response",
+  "bodySize": "Body {size} bytes",
+  "previewSuffix": " · preview only",
+  "downloadRequestBody": "Download full request body",
+  "downloadResponseBody": "Download full response body",
+  "loadMoreBody": "Load more body",
+  "previewTitle": "Preview traffic",
+  "previewDescription": "Traffic ID: {id}. The full body is saved when bound."
+}

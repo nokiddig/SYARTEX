@@ -1,0 +1,17 @@
+{
+  "connectError": "Unable to connect to the backend service",
+  "passwordMismatch": "The two passwords do not match",
+  "passwordTooShort": "Password must be at least 8 characters",
+  "initFailed": "Initialization failed",
+  "unavailableHeading": "Unable to confirm initialization status",
+  "heading": "Set up password",
+  "unavailableSubtitle": "The backend or database is temporarily unavailable. To avoid overwriting an existing password on this instance, the setup entry point has been temporarily disabled — please retry once the service is back.",
+  "subtitle": "First time using ARTEX? Set a login password for this account (at least 8 characters)",
+  "retry": "Retry",
+  "newPasswordLabel": "New password",
+  "passwordPlaceholder": "At least 8 characters",
+  "confirmPasswordLabel": "Confirm password",
+  "confirmPlaceholder": "Enter the password again",
+  "saving": "Saving...",
+  "submitButton": "Set password and sign in"
+}

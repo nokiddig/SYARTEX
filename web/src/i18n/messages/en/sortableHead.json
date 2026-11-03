@@ -1,0 +1,5 @@
+{
+  "sortDescending": "Sort by {label} descending",
+  "sortActiveAsc": "{label} sorted ascending, click to change direction",
+  "sortActiveDesc": "{label} sorted descending, click to change direction"
+}

@@ -1,0 +1,5 @@
+{
+  "seconds": "{count} 秒",
+  "minutes": "{count} 分钟",
+  "hours": "{count} 小时"
+}

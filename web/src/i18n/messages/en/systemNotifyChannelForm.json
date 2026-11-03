@@ -1,0 +1,12 @@
+{
+  "helpWrap": "({text})",
+  "saved": "Saved",
+  "savedWithTail": "Saved (ends in {tail})",
+  "maskedHint": "· Enter a new value to overwrite, or clear it to remove",
+  "allFindings": "All findings",
+  "includeWords": "Type matches {count} keyword(s)",
+  "excludeWords": "Excludes {count} keyword(s)",
+  "taskCount": "{count} task(s)",
+  "assetCount": "{count} asset(s)",
+  "statusChange": "Includes status changes"
+}

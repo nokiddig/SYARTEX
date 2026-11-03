@@ -1,0 +1,5 @@
+{
+  "empty": "No attack chain to show (this finding is not linked to an exploration node, or its task was deleted).",
+  "noLineage": "No attack chain",
+  "loading": "Loading…"
+}

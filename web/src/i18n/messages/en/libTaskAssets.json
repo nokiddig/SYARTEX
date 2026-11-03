@@ -1,0 +1,16 @@
+{
+  "type.app": "App",
+  "type.endpoint": "Endpoint",
+  "type.ip": "IP",
+  "type.root_domain": "Root domain",
+  "type.service": "Service",
+  "type.subdomain": "Subdomain",
+  "source.agent": "Agent discovered",
+  "source.anchor": "Blackboard anchor",
+  "source.api": "Asset API",
+  "source.company": "Company association",
+  "source.legacy": "Legacy association",
+  "source.manual": "Manually added",
+  "source.system": "System association",
+  "source.task": "Task initialization"
+}

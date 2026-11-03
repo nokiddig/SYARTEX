@@ -1,0 +1,22 @@
+{
+  "statusPending": "等待启动",
+  "statusRunning": "复测中",
+  "statusCompleted": "已完成",
+  "statusFailed": "复测失败",
+  "statusStopped": "已停止",
+  "verdictReproduced": "仍可复现",
+  "verdictFixed": "已修复",
+  "verdictInconclusive": "无法确认",
+  "cardTitle": "漏洞复测",
+  "cardDescription": "在独立会话中验证当前状态，保留每次复测的结论与证据。",
+  "viewRunningTitle": "查看正在进行的复测会话",
+  "startRetest": "发起复测",
+  "loadFailed": "加载复测记录失败：{error}",
+  "retry": "重试",
+  "emptyTitle": "暂无复测记录",
+  "emptyDescription": "修复部署完成后，可发起复测并比较新旧证据。",
+  "viewSession": "查看会话",
+  "sessionDeleted": "会话已删除",
+  "notes": "补充说明：{notes}",
+  "evidence": "复测证据"
+}

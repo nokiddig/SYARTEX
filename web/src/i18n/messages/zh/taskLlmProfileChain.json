@@ -1,0 +1,17 @@
+{
+  "current": "当前",
+  "skipped": "已跳过",
+  "skippedTitle": "当前游标之前的配置不会被自动故障转移选中",
+  "backup": "备用 {offset}",
+  "profileIdFallback": "配置 #{id}",
+  "searchPlaceholder": "搜索并添加 LLM 配置",
+  "noProfilesPlaceholder": "暂无可用 LLM 配置",
+  "noMatch": "没有匹配的 LLM 配置",
+  "activeSuffix": "（激活）",
+  "noneSelectedHint": "未指定配置时，任务跟随 Agent 或全局激活配置。",
+  "profileUnavailable": "配置已不可用",
+  "moveUpAriaLabel": "上移配置",
+  "moveDownAriaLabel": "下移配置",
+  "removeAriaLabel": "移除配置",
+  "currentProfileLabel": "当前配置"
+}

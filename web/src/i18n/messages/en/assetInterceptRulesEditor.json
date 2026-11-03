@@ -1,0 +1,13 @@
+{
+  "kindExactDomain": "Domain (exact)",
+  "kindExactIp": "IP (exact)",
+  "kindExactUrl": "URL (exact)",
+  "kindFuzzyDomain": "Domain (fuzzy)",
+  "kindFuzzyIp": "IP (fuzzy)",
+  "kindFuzzyUrl": "URL (fuzzy)",
+  "kindCidr": "CIDR range",
+  "actionBlock": "Block",
+  "actionAllow": "Allow",
+  "notePlaceholder": "Note (optional)",
+  "addRule": "Add rule"
+}

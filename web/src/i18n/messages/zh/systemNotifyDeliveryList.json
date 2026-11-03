@@ -1,0 +1,22 @@
+{
+  "readFailed": "读取投递记录失败：{message}",
+  "allChannels": "全部渠道",
+  "allStatuses": "全部状态",
+  "refresh": "刷新",
+  "total": "共 {total} 条",
+  "colTime": "时间",
+  "colFinding": "漏洞",
+  "colChannel": "渠道",
+  "colStatus": "状态",
+  "colAttempts": "尝试",
+  "colError": "错误",
+  "loading": "加载中…",
+  "empty": "暂无投递记录",
+  "untitled": "（无标题）",
+  "stateChanged": "状态变更",
+  "resend": "重发",
+  "requeued": "已重新入队",
+  "resendFailed": "重发失败：{message}",
+  "prev": "上一页",
+  "next": "下一页"
+}

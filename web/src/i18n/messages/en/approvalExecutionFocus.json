@@ -1,0 +1,11 @@
+{
+  "sourceMismatch": "The approval source doesn't match the current session",
+  "cannotLocateExecution": "Unable to locate the original execution",
+  "toolCallNotFoundMayBeDeleted": "The matching tool call wasn't found in this session; the record may have been deleted",
+  "toolCallNotFound": "The matching tool call wasn't found in this session",
+  "cannotLocatePrefix": "Unable to locate: {error}",
+  "expandedToolCall": "Expanded the tool call for approval #{id}",
+  "loadingPosition": "Loading the conversation position for approval #{id}…",
+  "retryLocate": "Retry",
+  "cancelLocate": "Cancel"
+}

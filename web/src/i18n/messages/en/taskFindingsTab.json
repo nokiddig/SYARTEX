@@ -1,0 +1,16 @@
+{
+  "uncategorized": "Uncategorized",
+  "inheritedSource": "Source #{id} · read-only",
+  "trafficEvidence": "{count} traffic evidence",
+  "viewFindingDetail": "View finding details",
+  "details": "Details",
+  "evidencePoc": "Evidence / PoC",
+  "markedAs": "Marked as \"{status}\"",
+  "updateFailed": "Update failed: {message}",
+  "finding": "Finding",
+  "sortAria": "Discovered time sorted {direction}; click to toggle sort direction",
+  "sortAsc": "ascending",
+  "sortDesc": "descending",
+  "discoveredAt": "Discovered",
+  "empty": "No confirmed findings for this task or directly linked tasks yet."
+}

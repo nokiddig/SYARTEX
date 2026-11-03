@@ -1,0 +1,8 @@
+{
+  "noTodo": "本会话暂无 Todo",
+  "viewRecent": "查看最近 Todo",
+  "recentTodo": "最近 Todo",
+  "loading": "加载中…",
+  "empty": "（空）",
+  "parseError": "解析 Todo 失败"
+}

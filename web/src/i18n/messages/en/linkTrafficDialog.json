@@ -1,0 +1,17 @@
+{
+  "bound": "Linked {count} traffic records to finding #{id}",
+  "title": "Link to finding",
+  "description": "Save the selected {count} traffic records as evidence for an existing finding.",
+  "searchLabel": "Find finding",
+  "searchPlaceholder": "Name / summary / vulnerability class",
+  "loading": "Loading…",
+  "emptyFindings": "No matching findings. Register a finding first.",
+  "prevPage": "Previous",
+  "nextPage": "Next",
+  "pageInfo": "Page {page} · {total} total",
+  "selected": "Selected finding: #{id} {label}",
+  "pickOne": "Select a finding",
+  "cancel": "Cancel",
+  "saving": "Saving…",
+  "confirm": "Confirm link"
+}

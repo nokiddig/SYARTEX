@@ -1,0 +1,13 @@
+{
+  "defaultLabel": "资产范围",
+  "defaultDescription": "每行一条，自动识别域名、IP、CIDR、ICP 备案和企业关键词。",
+  "placeholder": "example.com\n203.0.113.10\n198.51.100.0/24\n京ICP备12345678号-1\n企业名称关键词",
+  "kindDomain": "域名",
+  "kindIp": "IP",
+  "kindCidr": "CIDR",
+  "kindIcp": "ICP",
+  "kindKeyword": "关键词",
+  "recognizedCount": "已识别 {count} 条",
+  "lineError": "第 {line} 行：{error}",
+  "moreErrors": "另有 {count} 行错误"
+}

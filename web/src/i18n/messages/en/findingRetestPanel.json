@@ -1,0 +1,22 @@
+{
+  "statusPending": "Waiting to start",
+  "statusRunning": "Retesting",
+  "statusCompleted": "Completed",
+  "statusFailed": "Retest failed",
+  "statusStopped": "Stopped",
+  "verdictReproduced": "Still reproducible",
+  "verdictFixed": "Fixed",
+  "verdictInconclusive": "Inconclusive",
+  "cardTitle": "Finding retest",
+  "cardDescription": "Verify the current state in an isolated session and keep the conclusion and evidence of each retest.",
+  "viewRunningTitle": "View the retest session in progress",
+  "startRetest": "Start retest",
+  "loadFailed": "Failed to load retest records: {error}",
+  "retry": "Retry",
+  "emptyTitle": "No retest records yet",
+  "emptyDescription": "After the fix is deployed, start a retest to compare the old and new evidence.",
+  "viewSession": "View session",
+  "sessionDeleted": "Session deleted",
+  "notes": "Notes: {notes}",
+  "evidence": "Retest evidence"
+}

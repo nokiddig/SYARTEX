@@ -1,0 +1,15 @@
+{
+  "title": "系统日志",
+  "subtitle": "后端实时日志流(planner / worker / 数据库 / 流量 …)",
+  "filterPlaceholder": "过滤(文本 / tag)…",
+  "levelAll": "全部",
+  "paused": "已暂停",
+  "pause": "暂停",
+  "clear": "清空",
+  "lineCount": "{total} 行",
+  "warnCount": "{count} 警告",
+  "errorCount": "{count} 错误",
+  "loading": "加载中…",
+  "loadOlder": "加载更早日志",
+  "empty": "暂无日志。"
+}

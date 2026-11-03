@@ -1,0 +1,13 @@
+{
+  "kindExactDomain": "域名(全等)",
+  "kindExactIp": "IP(全等)",
+  "kindExactUrl": "URL(全等)",
+  "kindFuzzyDomain": "域名(模糊)",
+  "kindFuzzyIp": "IP(模糊)",
+  "kindFuzzyUrl": "URL(模糊)",
+  "kindCidr": "CIDR 网段",
+  "actionBlock": "拦截",
+  "actionAllow": "允许",
+  "notePlaceholder": "备注(可选)",
+  "addRule": "添加一条"
+}

@@ -1,0 +1,100 @@
+{
+  "kind": {
+    "dingtalk": "钉钉",
+    "feishu": "飞书",
+    "wecom": "企业微信",
+    "webhook": "通用 Webhook",
+    "telegram": "Telegram",
+    "email": "邮件"
+  },
+  "severity": {
+    "any": "不限",
+    "low": "低危及以上",
+    "medium": "中危及以上",
+    "high": "高危及以上",
+    "critical": "仅严重"
+  },
+  "dingtalk": {
+    "webhook": {
+      "label": "Webhook 地址"
+    },
+    "secret": {
+      "label": "加签密钥",
+      "help": "机器人安全设置选「加签」时填写；选「自定义关键词」或未开启安全设置则留空"
+    }
+  },
+  "feishu": {
+    "webhook": {
+      "label": "Webhook 地址"
+    },
+    "secret": {
+      "label": "签名校验密钥",
+      "help": "机器人开启「签名校验」时填写，否则留空"
+    }
+  },
+  "wecom": {
+    "webhook": {
+      "label": "Webhook 地址"
+    }
+  },
+  "webhook": {
+    "url": {
+      "label": "目标 URL"
+    },
+    "method": {
+      "label": "请求方法",
+      "options": {
+        "POST": "POST（带请求体）",
+        "PUT": "PUT（带请求体）",
+        "PATCH": "PATCH（带请求体）",
+        "GET": "GET（不带请求体）"
+      }
+    },
+    "headers": {
+      "label": "自定义请求头",
+      "help": "每行 KEY=VALUE，例如 Authorization=Bearer xxx"
+    },
+    "body_template": {
+      "label": "请求体模板",
+      "help": "留空用内置默认模板。变量：'{{.Title}} {{.Batch}} {{.Count}} {{.HomeURL}} {{.SentAt}}'，以及 range .Items 下的 .Name/.VulnClass/.Severity/.Summary/.Assets/.DetailURL/.StatusLabel。插入字符串请用 '{{json .Xxx}}' 而不是 '{{.Xxx}}'，否则标题里的引号会破坏 JSON。"
+    }
+  },
+  "telegram": {
+    "bot_token": {
+      "label": "Bot Token"
+    },
+    "chat_id": {
+      "label": "Chat ID"
+    },
+    "base_url": {
+      "label": "API 地址",
+      "help": "留空用官方地址；自建 Bot API 反代时填写"
+    }
+  },
+  "email": {
+    "host": {
+      "label": "SMTP 服务器"
+    },
+    "port": {
+      "label": "端口",
+      "help": "587 走 STARTTLS；465 请把「隐式 TLS」打开"
+    },
+    "username": {
+      "label": "账号"
+    },
+    "password": {
+      "label": "密码 / 授权码"
+    },
+    "from": {
+      "label": "发件人"
+    },
+    "to": {
+      "label": "收件人",
+      "help": "多个地址用逗号分隔"
+    },
+    "tls": {
+      "label": "隐式 TLS",
+      "help": "465 端口打开；587 保持关闭（会自动 STARTTLS）"
+    }
+  }
+}

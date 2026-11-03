@@ -1,0 +1,10 @@
+{
+  "empty": "（空）",
+  "copyFailed": "复制失败，请使用 Ctrl/Cmd+A 后复制",
+  "wrapOff": "关闭自动换行",
+  "wrapOn": "开启自动换行",
+  "copiedRaw": "已复制报文",
+  "copyRaw": "复制报文",
+  "copied": "已复制",
+  "codeAria": "HTTP 报文代码"
+}

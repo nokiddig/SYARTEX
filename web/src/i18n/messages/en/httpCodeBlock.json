@@ -1,0 +1,10 @@
+{
+  "empty": "(empty)",
+  "copyFailed": "Copy failed. Press Ctrl/Cmd+A and copy manually.",
+  "wrapOff": "Turn off line wrap",
+  "wrapOn": "Turn on line wrap",
+  "copiedRaw": "Raw message copied",
+  "copyRaw": "Copy raw message",
+  "copied": "Copied",
+  "codeAria": "HTTP message code"
+}

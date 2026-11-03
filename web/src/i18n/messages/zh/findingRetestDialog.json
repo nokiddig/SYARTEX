@@ -1,0 +1,13 @@
+{
+  "title": "复测漏洞 #{id}",
+  "description": "复测 Agent 将读取原证据和测试约束，在独立会话中执行针对性验证。复测成功完成且确认修复后，漏洞状态自动改为「已修复」，其他结论保留原状态。",
+  "started": "复测已启动，可点击「复测中」查看会话",
+  "alreadyRunning": "该漏洞正在复测，可查看已有会话",
+  "startFailed": "发起复测失败：{message}",
+  "notesLabel": "补充说明（可选）",
+  "notesPlaceholder": "例如：使用原测试账号验证原接口；修复版本为 v2。",
+  "notesHint": "可补充修复版本、测试条件或本次限制。",
+  "cancel": "取消",
+  "creating": "正在创建…",
+  "start": "开始复测"
+}

@@ -1,0 +1,14 @@
+{
+  "loadFailed": "Failed to load task findings: {error}",
+  "retry": "Retry",
+  "selectFinding": "Select finding",
+  "description": "View retest history for this task’s findings, or start a new retest.",
+  "selectAria": "Select finding: {name}",
+  "emptyTitle": "No findings to retest",
+  "emptyDescription": "Once this task finds vulnerabilities, you can start retests here.",
+  "prevPageAria": "Previous findings page",
+  "nextPageAria": "Next findings page",
+  "pageOf": "Page {page} of {total}",
+  "findingDetails": "Finding details",
+  "uncategorized": "Uncategorized"
+}

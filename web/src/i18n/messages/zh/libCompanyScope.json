@@ -1,0 +1,10 @@
+{
+  "valueRequired": "请填写范围值",
+  "maxLength": "最多 {max} 个字符",
+  "domainNoSpaces": "请输入不含空格的有效域名或 URL",
+  "invalidDomain": "请输入有效域名或 URL",
+  "invalidIp": "请输入有效 IP",
+  "invalidCidr": "请输入 CIDR 网段",
+  "ipv4Prefix": "IPv4 网段前缀需为 /16 至 /32",
+  "ipv6Prefix": "IPv6 网段前缀需为 /32 至 /128"
+}

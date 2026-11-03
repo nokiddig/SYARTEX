@@ -1,0 +1,100 @@
+{
+  "kind": {
+    "dingtalk": "DingTalk",
+    "feishu": "Feishu",
+    "wecom": "WeCom",
+    "webhook": "Generic webhook",
+    "telegram": "Telegram",
+    "email": "Email"
+  },
+  "severity": {
+    "any": "Any",
+    "low": "Low and above",
+    "medium": "Medium and above",
+    "high": "High and above",
+    "critical": "Critical only"
+  },
+  "dingtalk": {
+    "webhook": {
+      "label": "Webhook URL"
+    },
+    "secret": {
+      "label": "Signing secret",
+      "help": "Fill in when the bot's security setting is \"Signature\"; leave blank for \"Custom keyword\" or when no security setting is enabled"
+    }
+  },
+  "feishu": {
+    "webhook": {
+      "label": "Webhook URL"
+    },
+    "secret": {
+      "label": "Signature verification secret",
+      "help": "Fill in when the bot has \"Signature verification\" enabled; otherwise leave blank"
+    }
+  },
+  "wecom": {
+    "webhook": {
+      "label": "Webhook URL"
+    }
+  },
+  "webhook": {
+    "url": {
+      "label": "Target URL"
+    },
+    "method": {
+      "label": "Request method",
+      "options": {
+        "POST": "POST (with body)",
+        "PUT": "PUT (with body)",
+        "PATCH": "PATCH (with body)",
+        "GET": "GET (no body)"
+      }
+    },
+    "headers": {
+      "label": "Custom headers",
+      "help": "One KEY=VALUE per line, e.g. Authorization=Bearer xxx"
+    },
+    "body_template": {
+      "label": "Body template",
+      "help": "Leave blank to use the built-in default template. Variables: '{{.Title}} {{.Batch}} {{.Count}} {{.HomeURL}} {{.SentAt}}', and under range .Items: .Name/.VulnClass/.Severity/.Summary/.Assets/.DetailURL/.StatusLabel. To insert a string, use '{{json .Xxx}}' instead of '{{.Xxx}}', otherwise quotes in the title will break the JSON."
+    }
+  },
+  "telegram": {
+    "bot_token": {
+      "label": "Bot Token"
+    },
+    "chat_id": {
+      "label": "Chat ID"
+    },
+    "base_url": {
+      "label": "API URL",
+      "help": "Leave blank for the official endpoint; fill in when using a self-hosted Bot API reverse proxy"
+    }
+  },
+  "email": {
+    "host": {
+      "label": "SMTP server"
+    },
+    "port": {
+      "label": "Port",
+      "help": "587 uses STARTTLS; for 465, turn on \"Implicit TLS\""
+    },
+    "username": {
+      "label": "Username"
+    },
+    "password": {
+      "label": "Password / auth code"
+    },
+    "from": {
+      "label": "Sender"
+    },
+    "to": {
+      "label": "Recipients",
+      "help": "Separate multiple addresses with commas"
+    },
+    "tls": {
+      "label": "Implicit TLS",
+      "help": "Turn on for port 465; keep off for 587 (STARTTLS is used automatically)"
+    }
+  }
+}

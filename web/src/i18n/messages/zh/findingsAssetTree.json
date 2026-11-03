@@ -1,0 +1,22 @@
+{
+  "kindCompany": "企业",
+  "kindRootDomain": "根域名",
+  "kindSubdomain": "子域名",
+  "kindIp": "IP",
+  "kindApp": "应用",
+  "kindService": "服务",
+  "kindEndpoint": "接口",
+  "kindNone": "未关联",
+  "emptyNoAssets": "当前筛选下没有关联到资产的发现。",
+  "loading": "加载中…",
+  "noMatchingAssets": "没有匹配的资产。",
+  "filterPlaceholder": "过滤资产",
+  "refreshTree": "刷新资产树",
+  "allAssets": "全部资产",
+  "truncatedNotice": "资产过多，已隐藏{kinds}层级（计数仍已计入上层）。用筛选或过滤框收窄可看到完整层级。",
+  "collapse": "折叠",
+  "expand": "展开",
+  "criticalCount": "严重 {count}",
+  "highCount": "高危 {count}",
+  "totalFindings": "共 {total} 条发现"
+}

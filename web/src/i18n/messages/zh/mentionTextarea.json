@@ -1,0 +1,19 @@
+{
+  "placeholder": "消息，输入 @ 引用记录",
+  "selectReference": "选择引用记录",
+  "selectReferenceType": "选择引用类型",
+  "searchKind": "搜索{kind}",
+  "allRecords": "全部记录",
+  "keyboardHint": "↑↓ 选择 · Enter 确认 · Esc 关闭",
+  "referenceCandidates": "引用候选",
+  "searching": "搜索中…",
+  "searchFailed": "搜索失败：{error}。请重新输入重试。",
+  "noMatch": "没有匹配记录，请更换名称、地址或 ID",
+  "loadingMore": "正在加载更多…",
+  "loadFailedRetry": "加载失败，点击重试",
+  "shownScrollMore": "已显示 {count} 条，向下滚动加载更多",
+  "shownAll": "已显示全部 {count} 条",
+  "searchHint": "输入名称、地址或 ID 搜索记录",
+  "removeReference": "移除引用 {label}",
+  "latestDetailHint": "发送时读取最新详情 · 最多 10 条"
+}

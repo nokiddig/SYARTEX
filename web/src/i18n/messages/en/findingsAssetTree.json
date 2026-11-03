@@ -1,0 +1,22 @@
+{
+  "kindCompany": "Company",
+  "kindRootDomain": "Root domain",
+  "kindSubdomain": "Subdomain",
+  "kindIp": "IP",
+  "kindApp": "App",
+  "kindService": "Service",
+  "kindEndpoint": "Endpoint",
+  "kindNone": "Unlinked",
+  "emptyNoAssets": "No findings linked to assets under the current filters.",
+  "loading": "Loading…",
+  "noMatchingAssets": "No matching assets.",
+  "filterPlaceholder": "Filter assets",
+  "refreshTree": "Refresh asset tree",
+  "allAssets": "All assets",
+  "truncatedNotice": "Too many assets, so {kinds} levels are hidden (counts still roll up into the parent levels). Narrow with filters or the filter box to see the full hierarchy.",
+  "collapse": "Collapse",
+  "expand": "Expand",
+  "criticalCount": "Critical: {count}",
+  "highCount": "High: {count}",
+  "totalFindings": "{total} findings"
+}

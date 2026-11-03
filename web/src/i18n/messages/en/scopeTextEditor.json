@@ -1,0 +1,13 @@
+{
+  "defaultLabel": "Asset scope",
+  "defaultDescription": "One entry per line. Domains, IPs, CIDRs, ICP filings, and company keywords are recognized automatically.",
+  "placeholder": "example.com\n203.0.113.10\n198.51.100.0/24\nICP filing no. 12345678-1\ncompany name keyword",
+  "kindDomain": "Domain",
+  "kindIp": "IP",
+  "kindCidr": "CIDR",
+  "kindIcp": "ICP",
+  "kindKeyword": "Keyword",
+  "recognizedCount": "{count} recognized",
+  "lineError": "Line {line}: {error}",
+  "moreErrors": "{count} more line errors"
+}

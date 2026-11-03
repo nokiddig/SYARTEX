@@ -1,0 +1,16 @@
+{
+  "uncategorized": "未分类",
+  "inheritedSource": "来源 #{id} · 只读",
+  "trafficEvidence": "流量证据 {count} 条",
+  "viewFindingDetail": "查看漏洞详情",
+  "details": "详情",
+  "evidencePoc": "证据 / PoC",
+  "markedAs": "已标记为「{status}」",
+  "updateFailed": "更新失败：{message}",
+  "finding": "漏洞",
+  "sortAria": "发现时间当前{direction}，点击切换排序方向",
+  "sortAsc": "正序",
+  "sortDesc": "倒序",
+  "discoveredAt": "发现时间",
+  "empty": "本任务及直接关联任务暂无确认发现。"
+}

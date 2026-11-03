@@ -1,0 +1,10 @@
+{
+  "valueRequired": "Please enter a scope value",
+  "maxLength": "Up to {max} characters",
+  "domainNoSpaces": "Please enter a valid domain or URL without spaces",
+  "invalidDomain": "Please enter a valid domain or URL",
+  "invalidIp": "Please enter a valid IP address",
+  "invalidCidr": "Please enter a CIDR range",
+  "ipv4Prefix": "IPv4 CIDR prefix must be between /16 and /32",
+  "ipv6Prefix": "IPv6 CIDR prefix must be between /32 and /128"
+}

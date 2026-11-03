@@ -1,0 +1,11 @@
+{
+  "finding": "漏洞",
+  "asset": "资产",
+  "company": "企业",
+  "endpoint": "接口",
+  "ip": "IP",
+  "app": "应用",
+  "root_domain": "域名",
+  "subdomain": "子域名",
+  "service": "服务"
+}

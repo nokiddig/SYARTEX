@@ -1,0 +1,22 @@
+{
+  "readFailed": "Failed to load deliveries: {message}",
+  "allChannels": "All channels",
+  "allStatuses": "All statuses",
+  "refresh": "Refresh",
+  "total": "{total} total",
+  "colTime": "Time",
+  "colFinding": "Finding",
+  "colChannel": "Channel",
+  "colStatus": "Status",
+  "colAttempts": "Attempts",
+  "colError": "Error",
+  "loading": "Loading…",
+  "empty": "No deliveries yet",
+  "untitled": "(untitled)",
+  "stateChanged": "Status changed",
+  "resend": "Resend",
+  "requeued": "Re-queued",
+  "resendFailed": "Resend failed: {message}",
+  "prev": "Previous",
+  "next": "Next"
+}

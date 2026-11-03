@@ -1,0 +1,70 @@
+{
+  "layers": {
+    "connect": {
+      "title": "Connection retry",
+      "where": "SDK · before a 200 is received",
+      "trigger": "Can't connect or no 200 yet: network-level errors such as connection reset, read/write timeout, DNS failure, plus HTTP 408, 429, 500, 502, 503, 504.",
+      "skips": "Other status codes (400 / 401 / 403 / 404 / 413 / 422, etc.) are deterministic rejections; resending fails the same way, so they are raised immediately.",
+      "desc": "Resends the same request as-is. Once the stream has started (200 received), a mid-stream disconnect is not handled by this layer.",
+      "attemptsLabel": "Retry count",
+      "defInterval": "Exponential 0.5s→1s→2s (capped at 8s)",
+      "offHint": "-1 = never retry; fail immediately"
+    },
+    "empty": {
+      "title": "Empty-response retry",
+      "where": "SDK · openai format only",
+      "trigger": "HTTP 200 with a normal stop finish_reason, but the whole response has no content block. Gateway empty frames, dropped reasoning fields and sampling hiccups all look like this.",
+      "skips": "Responses empty because max_tokens truncated them don't count (fix that by raising the output limit; resending would hit the same limit).",
+      "desc": "Resends the entire prompt, so it is costly on long contexts; keep the count modest.",
+      "attemptsLabel": "Retry count",
+      "defInterval": "Exponential 0.5s→1s→2s (capped at 8s)",
+      "offHint": "-1 = pass the empty response through as-is"
+    },
+    "stream": {
+      "title": "Same-provider safe-window retry",
+      "where": "This project · before any output is delivered",
+      "trigger": "Problems after the stream was established (200 received): connection dropped mid-stream, provider overloaded, 429 / 5xx error events inside the stream, and not a single token has reached the caller yet.",
+      "skips": "Quota exhausted (402 / insufficient_quota, handled by profile rotation), context too long (413 / context length, handled by compaction), and deterministic 400 / 401 / 403 / 404 / 422 rejections are never retried.",
+      "desc": "Replays the same request on the same profile. Since no output has been delivered yet, the replay can't duplicate model output or tool execution.",
+      "attemptsLabel": "Retry count",
+      "defInterval": "Exponential 0.5s→1s (capped at 4s)",
+      "offHint": "-1 = on stream drop, hand off directly to the outer intent re-run"
+    },
+    "breaker": {
+      "title": "Polling circuit breaker",
+      "where": "This project · process-wide, one shared instance",
+      "trigger": "Trips once transient failures (429, 5xx, network errors) accumulate to the threshold. Deterministic failures (402 out of balance, 401 / 403 invalid key, 404 model not found) ignore the threshold and trip on the first occurrence.",
+      "skips": "A single success resets the count, so a profile that occasionally glitches never slowly accumulates to a trip.",
+      "desc": "After tripping, the profile enters cooldown, and polling skips it during cooldown. State is saved to the database, so it survives restarts.",
+      "attemptsLabel": "Consecutive failures before tripping",
+      "defInterval": "1min→5min→30min ladder",
+      "offHint": "-1 = transient failures never trip (deterministic failures still trip)"
+    },
+    "intent": {
+      "title": "Intent re-run",
+      "where": "This project · process-wide, one shared instance",
+      "trigger": "Layers above didn't absorb the failure: the worker ends with model_error, either because inner retries are exhausted or because the stream broke after output had already been delivered (replaying is unsafe then, so the whole intent must restart).",
+      "skips": "Quota exhaustion is already handled by profile rotation and is not re-run here. The re-run yields immediately if the task is paused, stopped or wrapping up, without spending backoff time.",
+      "desc": "Re-runs the entire intent from the beginning. It is the outermost layer, so each re-run multiplies the inner layers' counts again.",
+      "attemptsLabel": "Re-run count",
+      "defInterval": "Fixed 3s",
+      "offHint": "-1 = no re-run; the intent is marked blocked directly"
+    }
+  },
+  "triggerLabel": "Triggers",
+  "skipsLabel": "Does not apply",
+  "fixedValue": "Fixed {value}",
+  "defaultAttempts": "Default {count}",
+  "defaultBackoff": "Default backoff",
+  "intervalMs": "Interval ms",
+  "leaveEmptyHint": "Leave blank for the default; {hint}.",
+  "overrideTitle": "Retry override",
+  "overrideDesc": "Applies only to this profile and overrides the global defaults under \"Retry & backoff\". Leave a field blank to follow the global setting; a count of -1 turns that layer off; a set interval replaces exponential backoff with a fixed one. The circuit breaker and intent re-run are process-wide and can only be changed on the global page.",
+  "intro": "A failed model call passes through five retry layers in order, from inside to outside: <hl>connect → empty response → same-provider safe window → polling circuit breaker → intent re-run</hl>. Outer layers are only tried once inner layers are exhausted, so the counts <hl>multiply</hl>. Maxing out every layer can burn dozens of requests on a single hiccup. Leaving everything blank keeps the current defaults, identical to the behavior before this page existed. The first three layers can be overridden per model profile.",
+  "policyLoading": "Loading retry policy…",
+  "loadFailed": "Failed to load retry policy: {message}",
+  "saved": "Saved and applied immediately (calls already in progress still use the old parameters)",
+  "saveFailed": "Save failed: {message}",
+  "save": "Save",
+  "resetAll": "Reset all to defaults"
+}

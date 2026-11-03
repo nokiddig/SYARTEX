@@ -1,0 +1,8 @@
+{
+  "noTodo": "No todos in this session",
+  "viewRecent": "View recent todos",
+  "recentTodo": "Recent todos",
+  "loading": "Loading…",
+  "empty": "(empty)",
+  "parseError": "Failed to parse todos"
+}

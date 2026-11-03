@@ -1,0 +1,5 @@
+{
+  "sortDescending": "按{label}倒序排序",
+  "sortActiveAsc": "{label}当前正序，点击切换排序方向",
+  "sortActiveDesc": "{label}当前倒序，点击切换排序方向"
+}

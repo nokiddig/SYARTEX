@@ -1,0 +1,7 @@
+{
+  "unauthorized": "Unauthorized",
+  "uploadFailed": "Upload failed",
+  "downloadFailed": "Download failed",
+  "mockDownloadSample": "(demo) Sample download content for {path}.",
+  "mockReport": "# ARTEX Penetration Test Report — Acme Corp\n\n## Overview\n- Scope: acme.com (including www / admin / api / shop / vpn subdomains)\n- Confirmed findings: 6 (3 high · 3 medium · 2 low)\n- Engine mode: exploring\n\n## Key findings\n1. **[High] Default admin credentials** admin.acme.com admin/admin123 → full admin panel takeover.\n2. **[High] SQL injection** www.acme.com/search?q= → can read the acme_prod database.\n3. **[High] IDOR** api.acme.com/v1/orders?id= → can read other users' orders without authorization (including phone/address).\n4. **[Medium] Reflected XSS**, **exposed .git source**, **no login rate limiting**.\n\n## Recommendations\n- Force a password reset + enable MFA, ban default credentials on the admin panel.\n- Parameterize the search endpoint's queries, encode output.\n- Add object-level authorization checks to the API (IDOR), rotate to a strong JWT secret.\n\n> (demo) This report is generated from mock data, for UI demonstration only."
+}

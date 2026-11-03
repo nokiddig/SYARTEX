@@ -1,0 +1,17 @@
+{
+  "bound": "已关联 {count} 条流量到漏洞 #{id}",
+  "title": "关联到漏洞",
+  "description": "将所选 {count} 条流量保存为已有漏洞的证据。",
+  "searchLabel": "查找漏洞",
+  "searchPlaceholder": "名称 / 摘要 / 漏洞类别",
+  "loading": "加载中…",
+  "emptyFindings": "没有匹配的漏洞，请先登记漏洞",
+  "prevPage": "上一页",
+  "nextPage": "下一页",
+  "pageInfo": "第 {page} 页 · 共 {total} 条",
+  "selected": "已选漏洞：#{id} {label}",
+  "pickOne": "请选择一个漏洞",
+  "cancel": "取消",
+  "saving": "保存中…",
+  "confirm": "确认关联"
+}

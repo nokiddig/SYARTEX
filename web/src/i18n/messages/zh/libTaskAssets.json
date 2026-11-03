@@ -1,0 +1,16 @@
+{
+  "type.app": "应用",
+  "type.endpoint": "接口",
+  "type.ip": "IP",
+  "type.root_domain": "根域名",
+  "type.service": "服务",
+  "type.subdomain": "子域名",
+  "source.agent": "Agent 发现",
+  "source.anchor": "黑板锚点",
+  "source.api": "资产 API",
+  "source.company": "企业关联",
+  "source.legacy": "历史关联",
+  "source.manual": "人工加入",
+  "source.system": "系统关联",
+  "source.task": "任务初始化"
+}

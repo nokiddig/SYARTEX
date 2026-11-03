@@ -1,0 +1,17 @@
+{
+  "current": "Current",
+  "skipped": "Skipped",
+  "skippedTitle": "Profiles before the current cursor are not auto-selected on failover",
+  "backup": "Backup {offset}",
+  "profileIdFallback": "Profile #{id}",
+  "searchPlaceholder": "Search and add LLM profile",
+  "noProfilesPlaceholder": "No LLM profiles available",
+  "noMatch": "No matching LLM profiles",
+  "activeSuffix": " (active)",
+  "noneSelectedHint": "When no profile is specified, the task follows the agent's or global active profile.",
+  "profileUnavailable": "Profile no longer available",
+  "moveUpAriaLabel": "Move profile up",
+  "moveDownAriaLabel": "Move profile down",
+  "removeAriaLabel": "Remove profile",
+  "currentProfileLabel": "Current profile"
+}

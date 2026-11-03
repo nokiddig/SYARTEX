@@ -1,0 +1,13 @@
+{
+  "title": "Retest finding #{id}",
+  "description": "The retest agent reads the original evidence and test constraints, then runs a targeted verification in an isolated session. If the retest completes and the fix is confirmed, the finding status is automatically set to \"Fixed\"; other conclusions keep their current status.",
+  "started": "Retest started. Click \"Retesting\" to view the session.",
+  "alreadyRunning": "This finding is already being retested. You can view the existing session.",
+  "startFailed": "Failed to start retest: {message}",
+  "notesLabel": "Additional notes (optional)",
+  "notesPlaceholder": "For example: verify the original endpoint with the original test account; fixed version is v2.",
+  "notesHint": "You can add the fixed version, test conditions, or known limitations.",
+  "cancel": "Cancel",
+  "creating": "Creating…",
+  "start": "Start retest"
+}

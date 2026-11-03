@@ -1,0 +1,19 @@
+{
+  "placeholder": "Message, type @ to reference a record",
+  "selectReference": "Select a reference",
+  "selectReferenceType": "Select reference type",
+  "searchKind": "Search {kind}",
+  "allRecords": "all records",
+  "keyboardHint": "↑↓ select · Enter confirm · Esc close",
+  "referenceCandidates": "Reference candidates",
+  "searching": "Searching…",
+  "searchFailed": "Search failed: {error}. Please try again.",
+  "noMatch": "No matching records, try a different name, address, or ID",
+  "loadingMore": "Loading more…",
+  "loadFailedRetry": "Load failed, click to retry",
+  "shownScrollMore": "Showing {count}, scroll down to load more",
+  "shownAll": "Showing all {count}",
+  "searchHint": "Type a name, address, or ID to search records",
+  "removeReference": "Remove reference {label}",
+  "latestDetailHint": "Latest details are fetched on send · up to 10"
+}
