@@ -51,6 +51,7 @@ function fmtTime(value?: string) {
 function source(row: InterceptApprovalRow) {
   if (row.decision_source) return row.decision_source;
   if (row.rule_id) return "rule";
+  // intentionally Chinese: the [模型] marker is a persisted protocol prefix of model-made intercept reasons
   return row.reason?.startsWith("[模型]") ? "model" : "unknown";
 }
 
@@ -113,6 +114,7 @@ function StatusBadge({ status }: { status: string }) {
 
 function MatchCell({ row, showReason = true }: { row: InterceptApprovalRow; showReason?: boolean }) {
   const t = useTranslations("approvalRecords");
+  // intentionally Chinese: the [模型] marker is a persisted protocol prefix of model-made intercept reasons
   const reason = row.reason?.replace(/^\[模型\]\s*/, "");
   return (
     <div className="flex min-w-0 flex-col gap-1">
@@ -377,6 +379,7 @@ export function ApprovalDetail({
             <StatusBadge status={current.status} />
             <MatchCell row={current} showReason={false} />
           </div>
+          {/* intentionally Chinese: the [模型] marker is a persisted protocol prefix of model-made intercept reasons */}
           <p className="whitespace-pre-wrap break-words text-sm leading-7 [overflow-wrap:anywhere]">
             {current.reason?.replace(/^\[模型\]\s*/, "") || t("reasonNotRecordedApproval")}
           </p>
@@ -492,6 +495,7 @@ export function ApprovalDetail({
               ) : null}
               <CodeBlock
                 label={t("judgmentLabelTemplate", { label: initialLabel, action: actionLabels[audit.initial_action] ? t(actionLabels[audit.initial_action]) : audit.initial_action })}
+                // intentionally Chinese: the [模型] marker is a persisted protocol prefix of model-made intercept reasons
                 text={audit.initial_reason.replace(/^\[模型\]\s*/, "")}
               />
               <CodeBlock

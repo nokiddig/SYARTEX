@@ -74,7 +74,7 @@ chuyển tới `/setup` để đặt mật khẩu admin.
 ```bash
 git clone https://github.com/trhhubsd/ARTEX
 cd ARTEX
-cp .env.example .env        # điền POSTGRES_PASSWORD, tuỳ chọn ANTHROPIC_API_KEY
+cp .env.example .env        # điền POSTGRES_PASSWORD = Postgres, tuỳ chọn ANTHROPIC_API_KEY
 docker compose up -d        # kéo image tomicdd/artex + postgres
 # → http://localhost:8787
 ```

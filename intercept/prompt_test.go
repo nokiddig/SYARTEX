@@ -62,7 +62,7 @@ func TestParseVerdictUnwrapsCodeFence(t *testing.T) {
 	}
 }
 
-// Deliberately Chinese: the legacy Chinese section markers ("实际操作：" / "；成功后的后果：" /
+// intentionally Chinese: the legacy Chinese section markers ("实际操作：" / "；成功后的后果：" /
 // "；命中规则：") must still be accepted, and multi-byte text must not trip the length bound.
 func TestParseVerdictKeepsCompleteChineseExplanation(t *testing.T) {
 	reason := "实际操作：" + strings.Repeat("写入报告", 30) + "；成功后的后果：只保存文件；命中规则：A2"
@@ -70,7 +70,7 @@ func TestParseVerdictKeepsCompleteChineseExplanation(t *testing.T) {
 	if got := ParseVerdict(string(raw)); got.Reason != reason {
 		t.Fatal("explanation was truncated or lost its rule")
 	}
-	raw, _ = json.Marshal(map[string]string{"decision": "allow", "comment": strings.Repeat("中", 2401)})
+	raw, _ = json.Marshal(map[string]string{"decision": "allow", "comment": strings.Repeat("中", 2401)}) // intentionally Chinese: multi-byte runes against the length bound
 	if got := ParseVerdict(string(raw)); got.Action != "" {
 		t.Fatal("accepted unbounded explanation")
 	}
@@ -81,7 +81,7 @@ func TestParseVerdictAcceptsEnglishAndLegacyChineseMarkers(t *testing.T) {
 		"Actual operation: reads report.md; Consequence if successful: returns its content; Matched rule: A5",
 		"Actual operation:reads report.md;Consequence if successful:returns its content;Matched rule:A5",
 		"Actual operation: reads report.md ;  Consequence if successful: returns its content\n; Matched rule: A5",
-		"实际操作：读取 report.md；成功后的后果：返回内容；命中规则：A5", // deliberately Chinese: legacy markers
+		"实际操作：读取 report.md；成功后的后果：返回内容；命中规则：A5", // intentionally Chinese: legacy markers
 	} {
 		raw, _ := json.Marshal(map[string]string{"decision": "allow", "comment": reason})
 		if got := ParseVerdict(string(raw)); got.Action != "allow" || got.Reason != reason {

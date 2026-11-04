@@ -54,7 +54,7 @@ type Task struct {
 	SourceTaskIDs      []int64 `json:"source_task_ids,omitempty"`
 	CompanyIDs         []int64 `json:"company_ids,omitempty"`
 	Status             string  `json:"status"` // persisted lifecycle status (done/failed/timeout are terminal; empty/other values are derived from the runtime state)
-	// Task-level timeout (see docs/任务级超时与收尾设计.md). DeadlineAt/FirstRunAt are unix seconds, 0 = not set/not run yet.
+	// Task-level timeout (see docs/任务级超时与收尾设计.md; intentionally Chinese: design-doc file name). DeadlineAt/FirstRunAt are unix seconds, 0 = not set/not run yet.
 	TimeoutSeconds       int                    `json:"timeout_seconds"`
 	PlanHeartbeatSeconds int                    `json:"plan_heartbeat_seconds"` // planner heartbeat trigger interval (seconds)
 	CoverageEnabled      bool                   `json:"coverage_enabled"`       // asset coverage feature switch (set at creation, on by default)

@@ -175,6 +175,7 @@ export function classifyCompanyScopeLine(
     const error = companyScopeRuleError(rule);
     return error ? { line, error } : { line, rule };
   }
+  // intentionally Chinese: "备案" (ICP filing) is matched in Chinese-language target data
   if (/icp|备案/i.test(value)) return { line, rule: { kind: "icp", value } };
   return { line, rule: { kind: "keyword", value } };
 }

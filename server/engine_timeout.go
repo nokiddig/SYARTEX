@@ -12,7 +12,7 @@ import (
 	"github.com/Autumn-27/artex/db"
 )
 
-// Task-level timeout coordinator (see docs/任务级超时与收尾设计.md §4/§8.5).
+// Task-level timeout coordinator (see docs/任务级超时与收尾设计.md §4/§8.5; intentionally Chinese: design-doc file name).
 // Absolute wall clock: each task with a timeout gets one timer goroutine that, when due, drives the ordered settle sequence:
 //   ① settling → ② workers stop claiming new intents / ③ planner discards ordinary notify
 //   ④ wait for running workers to drain (bounded by grace) → ⑤ one final planner judgment round → ⑥ set the terminal status (guarded)

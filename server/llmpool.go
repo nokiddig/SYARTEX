@@ -10,7 +10,7 @@ import (
 	"github.com/Autumn-27/norma/llm"
 )
 
-// Server-side wiring for LLM rotation (failover). See docs/LLM轮询设计.md for the design:
+// Server-side wiring for LLM rotation (failover). See docs/LLM轮询设计.md (intentionally Chinese: design-doc file name) for the design:
 //   - only the globally active config path (agent not bound, task not pinned) rotates;
 //   - a bound/pinned path uses that config exclusively and fails when it fails (the
 //     fallback can be enabled with llm_pool_bind_fallback);

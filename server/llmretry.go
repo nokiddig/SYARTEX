@@ -7,7 +7,7 @@ import (
 	"github.com/Autumn-27/artex/db"
 )
 
-// Server-side resolution of the retry policy; see docs/LLM重试设计.md. Of the five layers:
+// Server-side resolution of the retry policy; see docs/LLM重试设计.md (intentionally Chinese: design-doc file name). Of the five layers:
 //   - connect / empty response / same-provider safety window "follow the endpoint":
 //     each LLM config may override the global default (a field left empty in the
 //     profile inherits the global value; if the global value is unset too, the

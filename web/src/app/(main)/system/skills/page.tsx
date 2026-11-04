@@ -370,7 +370,8 @@ export default function SkillsPage() {
     } catch (e) {
       const msg = (e as Error).message;
       // offer overwrite when the skill already exists
-      if (!overwrite && msg.includes("已存在")) {
+      // intentionally Chinese alternative: "已存在" is the legacy backend text; current text is "skill already exists: <name> ..."
+      if (!overwrite && (msg.includes("already exists") || msg.includes("已存在"))) {
         if (window.confirm(t("overwriteConfirm", { message: msg }))) {
           await uploadZip(file, true);
           return;

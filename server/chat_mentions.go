@@ -20,6 +20,8 @@ const maxChatMentions = 10
 // The kind words (漏洞|资产|企业|接口|IP|应用|域名|子域名|服务) are intentionally Chinese: they are
 // protocol tokens shared with db/chat_mentions.go, web/src/lib/chat-mentions.ts and prompts.
 var chatMentionPattern = regexp.MustCompile(`@\[(漏洞|资产|企业|接口|IP|应用|域名|子域名|服务)#([0-9]+)(?: [^\]\r\n]*)?\]`)
+
+// intentionally Chinese: map keys are the protocol kind words above
 var chatMentionKinds = map[string]string{
 	"漏洞": "finding", "资产": "asset", "企业": "company", "接口": "endpoint",
 	"IP": "ip", "应用": "app", "域名": "root_domain", "子域名": "subdomain", "服务": "service",

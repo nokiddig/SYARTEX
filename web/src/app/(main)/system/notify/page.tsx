@@ -146,6 +146,7 @@ export default function NotifyPage() {
         continue;
       }
       if (d.kind === "list") {
+        // intentionally Chinese: the fullwidth comma is accepted as a separator
         out[d.key] = String(raw ?? "")
           .split(/[\s,，]+/)
           .map((s) => s.trim())

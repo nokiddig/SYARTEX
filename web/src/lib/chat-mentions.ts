@@ -9,14 +9,18 @@ import { getCurrentMessages } from "@/i18n/get-messages";
 // intentionally Chinese: the kind words below (and the regex in selectedMentions) are the wire protocol
 // shared with server/chat_mentions.go and db/chat_mentions.go; they are not UI text.
 export const mentionKinds = [
+  // intentionally Chinese: wire-protocol kind word
   { kind: "finding", label: "漏洞", alias: "finding" },
   { kind: "asset", label: "资产", alias: "asset" },
   { kind: "company", label: "企业", alias: "company" },
+  // intentionally Chinese: wire-protocol kind word
   { kind: "endpoint", label: "接口", alias: "api" },
   { kind: "ip", label: "IP", alias: "ip" },
+  // intentionally Chinese: wire-protocol kind word
   { kind: "app", label: "应用", alias: "app" },
   { kind: "root_domain", label: "域名", alias: "domain" },
   { kind: "subdomain", label: "子域名", alias: "subdomain" },
+  // intentionally Chinese: wire-protocol kind word
   { kind: "service", label: "服务", alias: "service" },
 ] as const;
 
@@ -60,6 +64,7 @@ export function mentionSearch(query: string) {
 }
 
 export function mentionToken(item: ChatMention) {
+  // intentionally Chinese: the [模型] marker is a persisted protocol prefix of model-made intercept reasons
   const kind = mentionKinds.find((entry) => entry.kind === item.kind)?.label ?? "资产";
   const label = item.label
     .replace(/[[\]]/g, (char) => (char === "[" ? "(" : ")"))
@@ -69,6 +74,7 @@ export function mentionToken(item: ChatMention) {
 }
 
 export function selectedMentions(value: string) {
+  // intentionally Chinese: the [模型] marker is a persisted protocol prefix of model-made intercept reasons
   return [...value.matchAll(/@\[(漏洞|资产|企业|接口|IP|应用|域名|子域名|服务)#([0-9]+)(?: ([^\]\r\n]*))?\]/g)].map(
     (match) => ({
       token: match[0],

@@ -19,6 +19,7 @@ import (
 )
 
 func TestChatMentionParsing(t *testing.T) {
+	// intentionally Chinese: the kind words in @[kind#id] tokens are protocol tokens
 	refs, err := parseChatMentions("Analyze@[漏洞#12 same name] and @[接口#34 GET /api] @[漏洞#12 duplicate] user@example.com @漏洞")
 	if err != nil || len(refs) != 2 || refs[0].Kind != "finding" || refs[1].ID != 34 {
 		t.Fatalf("refs=%+v err=%v", refs, err)
@@ -30,11 +31,13 @@ func TestChatMentionParsing(t *testing.T) {
 	}
 	var msg strings.Builder
 	for i := 1; i <= 11; i++ {
+		// intentionally Chinese: the kind words in @[kind#id] tokens are protocol tokens
 		fmt.Fprintf(&msg, "@[资产#%d] ", i)
 	}
 	if _, err := parseChatMentions(msg.String()); err == nil {
 		t.Fatal("accepted more than 10 references")
 	}
+	// intentionally Chinese: the kind words in @[kind#id] tokens are protocol tokens
 	if actual, err := composeChatMentionMessage(nil, "plain message user@example.com @漏洞"); err != nil || actual != "plain message user@example.com @漏洞" {
 		t.Fatalf("plain chat changed: %s %v", actual, err)
 	}
@@ -162,6 +165,7 @@ func TestChatMentionWorkerReceivesServerDetails(t *testing.T) {
 		s.sendWorkerMessage(w, r)
 		return w
 	}
+	// intentionally Chinese: the kind words in @[kind#id] tokens are protocol tokens
 	if w := send("@[漏洞#9223372036854775807]"); w.Code != 400 {
 		t.Fatalf("invalid ref accepted: %d %s", w.Code, w.Body)
 	}
@@ -170,6 +174,7 @@ func TestChatMentionWorkerReceivesServerDetails(t *testing.T) {
 	if node.State != "paused" || len(items) != 0 {
 		t.Fatal("invalid reference started worker or persisted a turn")
 	}
+	// intentionally Chinese: the kind words in @[kind#id] tokens are protocol tokens
 	message := fmt.Sprintf("Please check @[漏洞#%d test]", fid)
 	if w := send(message); w.Code != 200 {
 		t.Fatalf("send: %d %s", w.Code, w.Body)
@@ -235,6 +240,7 @@ func TestChatMentionCatalogAndContext(t *testing.T) {
 		t.Fatal(err)
 	}
 	var refs strings.Builder
+	// intentionally Chinese: the kind words in @[kind#id] tokens are protocol tokens
 	fmt.Fprintf(&refs, "Analyze @[漏洞#%d forged client title] @[企业#%d company] ", fid, cid)
 	for _, kind := range []string{"root_domain", "subdomain", "ip", "app", "service", "endpoint"} {
 		var id int64
@@ -256,9 +262,11 @@ func TestChatMentionCatalogAndContext(t *testing.T) {
 			t.Fatalf("search %s: %+v %v", kind, items, err)
 		}
 		if kind == "ip" {
+			// intentionally Chinese: the kind words in @[kind#id] tokens are protocol tokens
 			if _, err := composeChatMentionMessage(pg, fmt.Sprintf("@[应用#%d]", id)); err == nil {
 				t.Fatal("accepted mismatched type")
 			}
+			// intentionally Chinese: the kind words in @[kind#id] tokens are protocol tokens
 			if data, err := loadChatMention(pg, chatMentionRef{"asset", id, "资产"}); err != nil || data == nil {
 				t.Fatalf("generic asset: %v", err)
 			}
@@ -276,6 +284,7 @@ func TestChatMentionCatalogAndContext(t *testing.T) {
 			t.Errorf("context missing %s", want)
 		}
 	}
+	// intentionally Chinese: the kind words in @[kind#id] tokens are protocol tokens
 	if _, err := composeChatMentionMessage(pg, "@[漏洞#9223372036854775807]"); err == nil {
 		t.Fatal("accepted missing record")
 	}
@@ -316,6 +325,7 @@ func TestChatMentionConversationReceivesServerDetails(t *testing.T) {
 		t.Fatal(err)
 	}
 	t.Cleanup(func() { waitRetestIdle(t, s); _, _ = s.m.pg.Exec(`DELETE FROM conversations WHERE id=$1`, c.ID) })
+	// intentionally Chinese: the kind words in @[kind#id] tokens are protocol tokens
 	message := fmt.Sprintf("Please review @[漏洞#%d example]", fid)
 	body, _ := json.Marshal(map[string]any{"message": message})
 	w := retestRequest(s.pgSendConversationMessage, http.MethodPost, c.ID, string(body))
@@ -342,6 +352,7 @@ func TestChatMentionConversationReceivesServerDetails(t *testing.T) {
 	if !foundUser || !foundResult {
 		t.Fatalf("turn incomplete: user=%v result=%v", foundUser, foundResult)
 	}
+	// intentionally Chinese: the kind words in @[kind#id] tokens are protocol tokens
 	w = retestRequest(s.pgSendConversationMessage, http.MethodPost, c.ID, `{"message":"@[漏洞#9223372036854775807]"}`)
 	if w.Code != 400 {
 		t.Fatalf("missing ref send: %d %s", w.Code, w.Body)

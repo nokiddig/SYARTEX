@@ -139,7 +139,7 @@ type Engine struct {
 
 	plannerRound sync.Map // taskID -> int, planner round counter (for UI round separators)
 
-	// Task-level timeout (see docs/任务级超时与收尾设计.md):
+	// Task-level timeout (see docs/任务级超时与收尾设计.md; intentionally Chinese: design-doc file name):
 	settling     sync.Map // taskID -> bool, task has entered the settle sequence (stop dispatching/claiming new intents)
 	deadline     sync.Map // taskID -> int64 unix, absolute deadline (stamped on first run; 0/unset = unlimited)
 	stamped      sync.Map // taskID -> bool, whether first_run_at has been stamped (stamped only once per process)

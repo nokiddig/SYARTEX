@@ -167,7 +167,7 @@ export function parseKV(text: string): Record<string, string> {
   }
   return out;
 }
-// parseIDs parses a list of ids separated by commas/whitespace (fullwidth commas are accepted on purpose, since users may type Chinese punctuation).
+// parseIDs parses a list of ids separated by commas/whitespace (intentionally Chinese: the fullwidth comma is accepted on purpose, since users may type Chinese punctuation).
 export function parseIDs(text: string): number[] {
   return text
     .split(/[\s,，]+/)
@@ -176,7 +176,7 @@ export function parseIDs(text: string): number[] {
     .map((s) => Number(s))
     .filter((n) => Number.isFinite(n) && n > 0);
 }
-// parseKeywords parses a keyword list separated by lines/commas (finding type names may contain spaces, so split by line or comma; fullwidth commas are accepted on purpose).
+// parseKeywords parses a keyword list separated by lines/commas (finding type names may contain spaces, so split by line or comma; intentionally Chinese: the fullwidth comma is accepted on purpose).
 export function parseKeywords(text: string): string[] {
   return text
     .split(/[\n,，]+/)

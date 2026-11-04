@@ -213,6 +213,7 @@ func ParseVerdict(text string) Verdict {
 // form; the legacy Chinese form is still accepted so that custom prompts saved
 // before the translation (and the models following them) keep working.
 var (
+	// intentionally Chinese: the second entry of each list is the legacy marker still accepted from the judge.
 	operationMarkers   = []string{"Actual operation:", "实际操作："}
 	consequenceMarkers = []string{"Consequence if successful:", "成功后的后果："}
 	ruleMarkers        = []string{"Matched rule:", "命中规则："}
@@ -241,6 +242,7 @@ func cutAtMarker(s string, markers []string) (before, after string, ok bool) {
 			}
 			i += from
 			head := strings.TrimRight(s[:i], " \t\r\n")
+			// intentionally Chinese: "；" is the fullwidth semicolon used by legacy-format judge output.
 			if strings.HasSuffix(head, ";") || strings.HasSuffix(head, "；") {
 				if bestAt < 0 || i < bestAt {
 					bestAt, bestLen = i, len(m)
@@ -254,6 +256,7 @@ func cutAtMarker(s string, markers []string) (before, after string, ok bool) {
 		return "", "", false
 	}
 	head := strings.TrimRight(s[:bestAt], " \t\r\n")
+	// intentionally Chinese: also strip the legacy fullwidth semicolon.
 	head = strings.TrimSuffix(strings.TrimSuffix(head, ";"), "；")
 	return head, s[bestAt+bestLen:], true
 }

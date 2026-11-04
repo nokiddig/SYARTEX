@@ -477,6 +477,7 @@ func (i *Interceptor) Judge(ctx context.Context, tool string, arguments json.Raw
 	configJSON, _ := json.Marshal(cfg)
 	out.ConfigDigest = digestInput(configJSON)
 	if out.Message == "" {
+		// intentionally Chinese: the "[模型]" (model) reason marker is persisted and matched by SQL LIKE / HasPrefix / web strip.
 		out.Message = "[模型] " + judgeActionLabel(out.Action)
 	} else if !strings.HasPrefix(out.Message, "[模型]") {
 		out.Message = "[模型] " + out.Message

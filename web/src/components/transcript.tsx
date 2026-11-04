@@ -183,7 +183,7 @@ function toolInputText(tool: string, raw: string): string {
 }
 
 // InterceptCard renders an inline intercept_request approval card. The pending_id
-// is extracted from the summary (format: "Tool X requests approval (#N)"; legacy rows use "工具 X 请求审批 (#N)") so buttons are
+// is extracted from the summary (format: "Tool X requests approval (#N)"; legacy rows (intentionally Chinese) use "工具 X 请求审批 (#N)") so buttons are
 // available immediately without waiting for the detail load.
 function InterceptCard({
   step,

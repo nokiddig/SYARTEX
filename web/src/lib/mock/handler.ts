@@ -2442,6 +2442,7 @@ function route(m: string, path: string, seg: string[], q: URLSearchParams, b: Re
     if (decisionSource && !["model", "rule", "unknown"].includes(decisionSource)) throw new Error(mx("invalidDecisionSource"));
     const filtered = mockInterceptHistory.filter((row) => {
       const source =
+        // intentionally Chinese: the [模型] marker is a persisted protocol prefix of model-made intercept reasons
         row.decision_source || (row.rule_id ? "rule" : row.reason?.startsWith("[模型]") ? "model" : "unknown");
       return (
         (seg[1] !== "task" || row.task_id === decodeURIComponent(seg[2])) &&

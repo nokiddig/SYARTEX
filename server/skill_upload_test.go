@@ -18,8 +18,9 @@ import (
 )
 
 func TestValidSkillName(t *testing.T) {
-	ok := []string{"web-recon", "a", "nuclei2", "中文技能", "端口扫描-x", "日本語スキル"} // intentionally CJK: non-ASCII skill names must be accepted
+	ok := []string{"web-recon", "a", "nuclei2", "中文技能", "端口扫描-x", "日本語スキル"} // intentionally Chinese (CJK): non-ASCII skill names must be accepted
 	bad := []string{
+		// intentionally Chinese: names mixing CJK with spaces, separators, a bidi override or punctuation must be rejected
 		"", "Web-Recon", "-lead", "trail-", "dou--ble", "has space", "中文 技能",
 		"dot.name", "a/b", `a\b`, "..", ".", "中文/技能", "sk\x00ill", "中‮文",
 		strings.Repeat("a", 65), "1abc", "中文技能!",
@@ -52,6 +53,7 @@ func TestSkillRelPath(t *testing.T) {
 		}
 	}
 	bad := []string{
+		// intentionally Chinese: CJK paths with spaces, a bidi override or an invalid-UTF-8 (GBK) sequence must be rejected
 		"", "../etc/passwd", "a/../../b", "/abs/path", "a//b", `..\..\x`,
 		"%2e%2e/x", "a\x00b", "中文 名.md", "中‮文.md", "a#b.md", "a?b.md",
 		"a:b.md", string([]byte{0xd6, 0xd0}) + ".md", // bare GBK bytes: invalid UTF-8
@@ -131,21 +133,25 @@ const zhSkillMD = "---\nname: 中文技能\ndescription: test\n---\nbody\n" // i
 
 // A zstd-compressed archive (an optional WinZip compression method) used to blow up
 // with "zip: unsupported compression"; it now installs like any Deflate archive.
-// The Chinese skill/file names here are intentional: the test covers non-ASCII paths.
+// The Chinese skill/file names here are intentionally Chinese: the test covers non-ASCII paths.
 func TestUploadSkillZstdAndChineseNames(t *testing.T) {
 	dir := t.TempDir()
+	// intentionally Chinese: non-ASCII skill and file names inside the archive
 	data := buildZip(t,
 		zipFile{name: "中文技能/SKILL.md", body: zhSkillMD, method: zipMethodZstd},
 		zipFile{name: "中文技能/参考/说明 文档.md", body: "reference", method: zipMethodZstd},
-		zipFile{name: "中文技能/scripts/run.py", body: "print(1)", method: zip.Deflate},
+		zipFile{name: "中文技能/scripts/run.py", body: "print(1)", method: zip.Deflate}, // intentionally Chinese: non-ASCII skill directory
 	)
+	// intentionally Chinese: the expected extracted names below
 	rr, out := uploadZip(t, dir, "中文技能.zip", data)
 	if rr.Code != 201 {
 		t.Fatalf("status = %d, body = %s", rr.Code, rr.Body)
 	}
+	// intentionally Chinese: expected skill name
 	if out["name"] != "中文技能" {
 		t.Fatalf("name = %v, want 中文技能", out["name"])
 	}
+	// intentionally Chinese: extracted non-ASCII paths
 	for _, rel := range []string{"SKILL.md", "参考/说明 文档.md", "scripts/run.py"} {
 		if _, err := os.Stat(filepath.Join(dir, "中文技能", rel)); err != nil {
 			t.Errorf("missing extracted file %q: %v", rel, err)
@@ -154,8 +160,8 @@ func TestUploadSkillZstdAndChineseNames(t *testing.T) {
 }
 
 // GBK-named entries (7-Zip / Explorer on Chinese Windows) must be decoded rather
-// than rejected as invalid UTF-8 paths. The Chinese names here are intentional: they
-// are encoded to GBK on purpose.
+// than rejected as invalid UTF-8 paths. The Chinese names here are intentionally Chinese:
+// they are encoded to GBK on purpose.
 func TestUploadSkillGBKNames(t *testing.T) {
 	gbk := func(s string) string {
 		b, err := simplifiedchinese.GBK.NewEncoder().String(s)
@@ -165,6 +171,7 @@ func TestUploadSkillGBKNames(t *testing.T) {
 		return b
 	}
 	dir := t.TempDir()
+	// intentionally Chinese: GBK-encoded entry names
 	data := buildZip(t,
 		zipFile{name: gbk("中文技能/SKILL.md"), body: zhSkillMD, method: zip.Deflate, nonUTF8: true},
 		zipFile{name: gbk("中文技能/参考资料.md"), body: "content", method: zip.Deflate, nonUTF8: true},
@@ -173,9 +180,11 @@ func TestUploadSkillGBKNames(t *testing.T) {
 	if rr.Code != 201 {
 		t.Fatalf("status = %d, body = %s", rr.Code, rr.Body)
 	}
+	// intentionally Chinese: the decoded GBK names are expected
 	if out["name"] != "中文技能" {
 		t.Fatalf("name = %v, want 中文技能", out["name"])
 	}
+	// intentionally Chinese: decoded GBK entry path
 	if _, err := os.Stat(filepath.Join(dir, "中文技能", "参考资料.md")); err != nil {
 		t.Errorf("GBK-named entry not extracted: %v", err)
 	}
@@ -238,6 +247,7 @@ func TestUploadSkillRejectsTraversal(t *testing.T) {
 }
 
 func TestSkillNameFromFrontmatterQuoted(t *testing.T) {
+	// intentionally Chinese: a quoted non-ASCII skill name must be parsed from the frontmatter
 	got := skillNameFromFrontmatter([]byte("---\nname: \"中文技能\"\ndescription: x\n---\n"))
 	if got != "中文技能" {
 		t.Fatalf("name = %q, want 中文技能", got)

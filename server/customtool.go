@@ -22,7 +22,7 @@ import (
 	actool "github.com/Autumn-27/norma/tool"
 )
 
-// This file implements the custom tool executor (docs/自定义工具设计.md). Rows of the
+// This file implements the custom tool executor (docs/自定义工具设计.md, intentionally Chinese file name). Rows of the
 // tools table with system=false are dispatched by kind: command (render the command ->
 // reuse Bash's underlying run), script (Python only; write a temp file, stdin = the
 // parameters JSON + env TOOL_*, use the configured interpreter), http (native request

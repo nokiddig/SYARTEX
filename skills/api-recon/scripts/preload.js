@@ -189,7 +189,7 @@
   }
 
   // --- Mock helpers ---
-  // Intentionally Chinese: the first three alternatives match Chinese-language "not logged in" /
+  // intentionally Chinese: the first three alternatives match Chinese-language "not logged in" /
   // "unauthorized" / "authorization" messages returned by Chinese-language target sites (class D
   // data-matching keywords); the remaining alternatives are the English equivalents.
   const NEGATIVE_RE = /未登录|未授权|授权|not\s*login|unauthorized|forbidden/i;
