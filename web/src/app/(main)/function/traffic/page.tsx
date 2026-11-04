@@ -251,7 +251,7 @@ export default function TrafficPage() {
     [hosts, hostCountSortDirection],
   );
 
-  // "清空" for the unfiltered purge, "删除" for the host-scoped ones — the dialog's
+  // "Clear all" for the unfiltered purge, "Delete" for the host-scoped ones — the dialog's
   // title and its confirm button both follow from which is in play.
   const confirmLabel =
     deleteMode === "all"
@@ -476,7 +476,7 @@ export default function TrafficPage() {
           {t("deleteTarget")}
         </Button>
         {/* Outline rather than a second destructive button: this one ignores every
-            filter, so it must not look one mis-click away from "删除该目标". */}
+            filter, so it must not look one mis-click away from "Delete this target". */}
         <Button
           variant="outline"
           size="sm"

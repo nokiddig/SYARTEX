@@ -38,6 +38,7 @@ func TestInterceptApprovalFilters(t *testing.T) {
 						ruleID = rule.ID
 					}
 					if source == "model" {
+						// intentionally Chinese: "[模型]" is the persisted marker of model-made decisions.
 						reason = "[模型] fixture"
 					}
 					id, err := d.CreateDecidedIntercept(ruleID, 0, task, "test", "Bash", []byte(`{"command":"fixture"}`), status, reason)

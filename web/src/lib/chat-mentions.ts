@@ -6,6 +6,8 @@ import { getCurrentMessages } from "@/i18n/get-messages";
 // it intentionally stays the original Chinese literal regardless of locale.
 // Use `mentionKindDisplayLabel` below for any UI (e.g. the autocomplete
 // dropdown) that wants a locale-aware label instead.
+// intentionally Chinese: the kind words below (and the regex in selectedMentions) are the wire protocol
+// shared with server/chat_mentions.go and db/chat_mentions.go; they are not UI text.
 export const mentionKinds = [
   { kind: "finding", label: "漏洞", alias: "finding" },
   { kind: "asset", label: "资产", alias: "asset" },
@@ -60,7 +62,7 @@ export function mentionSearch(query: string) {
 export function mentionToken(item: ChatMention) {
   const kind = mentionKinds.find((entry) => entry.kind === item.kind)?.label ?? "资产";
   const label = item.label
-    .replace(/[[\]]/g, (char) => (char === "[" ? "（" : "）"))
+    .replace(/[[\]]/g, (char) => (char === "[" ? "(" : ")"))
     .replace(/\s+/g, " ")
     .slice(0, 100);
   return `@[${kind}#${item.id} ${label}]`;

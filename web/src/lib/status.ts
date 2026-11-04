@@ -34,81 +34,81 @@ interface StatusMeta {
 }
 
 const intent: Record<string, StatusMeta> = {
-  open: { label: "待领", tone: "slate" },
-  running: { label: "执行中", tone: "blue" },
-  paused: { label: "已暂停", tone: "amber" },
-  done: { label: "已完成", tone: "green" },
+  open: { label: "Unclaimed", tone: "slate" },
+  running: { label: "Running", tone: "blue" },
+  paused: { label: "Paused", tone: "amber" },
+  done: { label: "Done", tone: "green" },
   // blocked = retries exhausted after a model/API/network failure; this intent was never really explored (not a target-side block).
-  blocked: { label: "执行出错", tone: "red" },
+  blocked: { label: "Error", tone: "red" },
   // exhausted = cut off mid-run after hitting the step/time budget; only partial results were written back (the direction itself isn't fully explored).
-  exhausted: { label: "预算耗尽", tone: "violet" },
+  exhausted: { label: "Budget exhausted", tone: "violet" },
   // stopped = legacy soft-delete state (kept for historical data).
-  stopped: { label: "已停止", tone: "slate" },
+  stopped: { label: "Stopped", tone: "slate" },
   // deleted = the user soft-deleted this intent (node and lineage are kept; see the delete_reason field).
-  deleted: { label: "已删除", tone: "slate" },
+  deleted: { label: "Deleted", tone: "slate" },
 };
 
 const task: Record<string, StatusMeta> = {
-  created: { label: "已创建", tone: "slate" },
-  queued: { label: "排队中", tone: "amber" },
-  running: { label: "运行中", tone: "blue" },
-  paused: { label: "已暂停", tone: "amber" },
-  done: { label: "已完成", tone: "green" },
-  failed: { label: "失败", tone: "red" },
-  timeout: { label: "已超时", tone: "amber" },
+  created: { label: "Created", tone: "slate" },
+  queued: { label: "Queued", tone: "amber" },
+  running: { label: "Running", tone: "blue" },
+  paused: { label: "Paused", tone: "amber" },
+  done: { label: "Done", tone: "green" },
+  failed: { label: "Failed", tone: "red" },
+  timeout: { label: "Timed out", tone: "amber" },
 };
 
 const severity: Record<string, StatusMeta> = {
-  critical: { label: "严重", tone: "rose" },
-  high: { label: "高危", tone: "red" },
-  medium: { label: "中危", tone: "amber" },
-  low: { label: "低危", tone: "slate" },
+  critical: { label: "Critical", tone: "rose" },
+  high: { label: "High", tone: "red" },
+  medium: { label: "Medium", tone: "amber" },
+  low: { label: "Low", tone: "slate" },
 };
 
 const finding: Record<string, StatusMeta> = {
-  pending: { label: "待处理", tone: "amber" },
-  in_progress: { label: "处理中", tone: "blue" },
-  confirmed: { label: "已确认", tone: "red" },
-  resolved: { label: "已处理", tone: "green" },
-  fixed: { label: "已修复", tone: "green" },
-  false_positive: { label: "误报", tone: "slate" },
-  ignored: { label: "忽略", tone: "neutral" },
-  duplicate: { label: "重复", tone: "neutral" },
-  risk_accepted: { label: "风险接受", tone: "violet" },
+  pending: { label: "Pending", tone: "amber" },
+  in_progress: { label: "In progress", tone: "blue" },
+  confirmed: { label: "Confirmed", tone: "red" },
+  resolved: { label: "Resolved", tone: "green" },
+  fixed: { label: "Fixed", tone: "green" },
+  false_positive: { label: "False positive", tone: "slate" },
+  ignored: { label: "Ignored", tone: "neutral" },
+  duplicate: { label: "Duplicate", tone: "neutral" },
+  risk_accepted: { label: "Risk accepted", tone: "violet" },
 };
 
 const engine: Record<string, StatusMeta> = {
-  exploring: { label: "探索中", tone: "blue" },
-  paused: { label: "已暂停", tone: "amber" },
-  stalled: { label: "停滞", tone: "red" },
-  idle: { label: "空闲", tone: "neutral" },
+  exploring: { label: "Exploring", tone: "blue" },
+  paused: { label: "Paused", tone: "amber" },
+  stalled: { label: "Stalled", tone: "red" },
+  idle: { label: "Idle", tone: "neutral" },
 };
 
 const goal: Record<string, StatusMeta> = {
-  open: { label: "进行中", tone: "blue" },
-  met: { label: "已达成", tone: "green" },
-  abandoned: { label: "已放弃", tone: "slate" },
+  open: { label: "In progress", tone: "blue" },
+  met: { label: "Met", tone: "green" },
+  abandoned: { label: "Abandoned", tone: "slate" },
 };
 
 const audit: Record<string, StatusMeta> = {
-  allow: { label: "放行", tone: "green" },
-  block: { label: "拦截", tone: "red" },
+  allow: { label: "Allow", tone: "green" },
+  block: { label: "Block", tone: "red" },
 };
 
 const node: Record<string, StatusMeta> = {
-  observed: { label: "观测", tone: "slate" },
-  confirmed: { label: "确认", tone: "green" },
-  tombstoned: { label: "废弃", tone: "neutral" },
+  observed: { label: "Observed", tone: "slate" },
+  confirmed: { label: "Confirmed", tone: "green" },
+  tombstoned: { label: "Discarded", tone: "neutral" },
 };
 
 // Notification delivery status. sending uses blue rather than amber: it isn't "a problem",
 // it's "picked up and in flight" — distinct from the waiting semantics of pending.
 const delivery: Record<string, StatusMeta> = {
-  pending: { label: "待发送", tone: "amber" },
-  sending: { label: "发送中", tone: "blue" },
-  sent: { label: "已送达", tone: "green" },
-  failed: { label: "失败", tone: "red" },
-  skipped: { label: "已跳过", tone: "neutral" },
+  pending: { label: "Pending", tone: "amber" },
+  sending: { label: "Sending", tone: "blue" },
+  sent: { label: "Delivered", tone: "green" },
+  failed: { label: "Failed", tone: "red" },
+  skipped: { label: "Skipped", tone: "neutral" },
 };
 
 const maps = {

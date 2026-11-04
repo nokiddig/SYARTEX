@@ -28,7 +28,7 @@ interface FindingRetestDialogProps {
   onStarted?: (retest: FindingRetest) => void;
 }
 
-// 仅在打开时挂载，关闭后清空说明；列表与详情共用提交锁及错误处理，启动后留在当前页。
+// Mounted only while open; the note is cleared on close. The list and detail views share the submit lock and error handling, and the user stays on the current page after launch.
 export function FindingRetestDialog({ findingId, findingName, onClose, onStarted }: FindingRetestDialogProps) {
   const t = useTranslations("findingRetestDialog");
   const notesId = React.useId();

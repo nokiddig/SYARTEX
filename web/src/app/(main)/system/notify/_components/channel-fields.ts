@@ -1,13 +1,13 @@
-// 渠道字段表与配置值的解析工具。
+// Channel field table and config-value parsing utilities.
 //
-// 与页面拆开是因为这一份是**数据**而不是视图：它描述每种渠道有哪些字段、
-// 各自该用什么控件，以及表单文本到配置值（JSON）的双向转换。
-// 单独放一个文件后，新增渠道只需要动这里，页面本身不必改。
+// Kept separate from the page because this one is **data** rather than a view: it describes which fields each kind of channel has,
+// which control each should use, and the two-way conversion between form text and config values (JSON).
+// With a standalone file, adding a channel only touches this file, and the page itself need not change.
 //
-// 文案说明：本文件是普通模块（不能调用 useTranslations），所以这里的
-// label / help / 选项文案都只存「翻译 key」，key 指向 systemNotifyChannelFields
-// 命名空间；由调用方（channel-form.tsx / page.tsx）用 t() 解析成当前语言。
-// 渠道类型的展示名与简介。放在前端是因为它只影响文案，后端不需要知道。
+// Note on copy: this file is a plain module (it cannot call useTranslations), so the
+// label / help / option copy here all store only a "translation key", the key pointing into the systemNotifyChannelFields
+// namespace; the caller (channel-form.tsx / page.tsx) resolves it with t() into the current language.
+// Display name and blurb of each channel type. Kept in the frontend because it only affects copy and the backend need not know.
 export const KIND_LABEL: Record<string, string> = {
   dingtalk: "kind.dingtalk",
   feishu: "kind.feishu",
@@ -17,16 +17,16 @@ export const KIND_LABEL: Record<string, string> = {
   email: "kind.email",
 };
 
-// 各渠道的配置字段定义。
+// Config field definitions of each channel.
 //
-// 这里刻意保留一份前端字段表，而不是让后端下发 schema：后端只负责
-// Validate（必填/格式），UI 需要的是布局与控件类型，两者关注的不是同一件事。
-// 唯一的耦合点是 secret_keys —— 哪些字段该渲染成密码框由后端给出，
-// 因为只有渠道实现自己清楚哪些值算凭据（企业微信的整个 Webhook 就是凭据，
-// 而钉钉的只是其中一个 secret）。新增渠道时这里少一个条目只会让表单变空白，
-// 不会静默出错（下面的 hasFields 会提示）。
+// A frontend field table is deliberately kept here, instead of having the backend send down a schema: the backend is only responsible for
+// Validate (required/format), while the UI needs layout and control types - the two are not the same concern.
+// The only coupling point is secret_keys - which fields should render as password boxes is given by the backend,
+// because only the channel implementation knows which values count as credentials (WeCom's whole Webhook is a credential,
+// whereas for DingTalk it is only one secret among them). A missing entry here when adding a channel only leaves the form blank,
+// and does not fail silently (hasFields below will flag it).
 //
-// label / help / options[].label 均为翻译 key（见文件头说明）。
+// label / help / options[].label are all translation keys (see the file header note).
 export type FieldKind = "text" | "password" | "number" | "select" | "textarea" | "switch" | "kv" | "list";
 export interface FieldDef {
   key: string;
@@ -117,7 +117,7 @@ export const CHANNEL_FIELDS: Record<string, FieldDef[]> = {
   ],
 };
 
-// value 为过滤条件的取值（与后端一致），label 为翻译 key。
+// value is the filter value (consistent with the backend), label is a translation key.
 export const SEVERITY_OPTIONS = [
   { value: "", label: "severity.any" },
   { value: "low", label: "severity.low" },
@@ -156,7 +156,7 @@ export const emptyForm = (kind: string): ChannelForm => ({
   onStatusChange: false,
 });
 
-// parseKV 解析「每行 KEY=VALUE」的文本域。
+// parseKV parses a "one KEY=VALUE per line" textarea.
 export function parseKV(text: string): Record<string, string> {
   const out: Record<string, string> = {};
   for (const line of text.split("\n")) {
@@ -167,7 +167,7 @@ export function parseKV(text: string): Record<string, string> {
   }
   return out;
 }
-// parseIDs 解析逗号/空白分隔的 id 列表。
+// parseIDs parses a list of ids separated by commas/whitespace (fullwidth commas are accepted on purpose, since users may type Chinese punctuation).
 export function parseIDs(text: string): number[] {
   return text
     .split(/[\s,，]+/)
@@ -176,7 +176,7 @@ export function parseIDs(text: string): number[] {
     .map((s) => Number(s))
     .filter((n) => Number.isFinite(n) && n > 0);
 }
-// parseKeywords 解析行/逗号分隔的关键词列表（漏洞类型名可能含空格，所以按行或逗号切）。
+// parseKeywords parses a keyword list separated by lines/commas (finding type names may contain spaces, so split by line or comma; fullwidth commas are accepted on purpose).
 export function parseKeywords(text: string): string[] {
   return text
     .split(/[\n,，]+/)

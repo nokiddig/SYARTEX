@@ -162,13 +162,13 @@ export ANTHROPIC_API_KEY=sk-...
 # hoặc
 export OPENAI_API_KEY=sk-...
 ```
-Hoặc cấu hình ngay trong UI, trang **"LLM 配置" (LLM Config)**. Biến môi
+Hoặc cấu hình ngay trong UI, trang **"LLM"**. Biến môi
 trường tuỳ chọn: `ARTEX_LLM_PROVIDER`, `ARTEX_LLM_MODEL`, `ARTEX_LLM_BASE_URL`,
 `ARTEX_LLM_PROXY`.
 
 ### 4.4. Số lượng worker song song
 
-Cấu hình trong UI tại **"系统设置" (System Settings)** — mặc định 3 worker
+Cấu hình trong UI tại **"System settings"** — mặc định 3 worker
 cho mỗi task.
 
 ### 4.5. Tham số khởi động
@@ -248,7 +248,7 @@ tiến trình) và được escape an toàn khi ghi SQL.
 
 ### Cách 1 — Cập nhật 1-click trên UI
 
-Vào **System Settings → "版本与更新" (Version & Update)**: bấm "Cập nhật" →
+Vào **System Settings → "Version & updates"**: bấm "Cập nhật" →
 tải bản release đúng nền tảng → so khớp `SHA256SUMS` → test nhanh bằng `-h` →
 lưu tạm thành `artex.new` → chương trình thoát, `start.sh`/`start.bat` khởi
 động lại để thay thế.
@@ -342,28 +342,28 @@ mục `screenshots/`):
 | Khu vực | Mô tả |
 |---|---|
 | **Dashboard** | Tổng quan, mức tiêu thụ token, dòng hoạt động (activity feed). |
-| **Tasks (任务)** | Danh sách task pentest, chi tiết phiên làm việc (session) và các lần gọi công cụ (tool call) của từng agent. |
-| **Exploration Graph (探索链路)** | Trực quan hoá chuỗi goal → intent → fact → finding. |
-| **Findings (发现)** | Danh sách lỗ hổng phát hiện được, trạng thái xử lý, có thể **复测 (retest)** để xác nhận đã vá hay chưa. |
-| **Assets (资产)** | Đồ thị tài sản toàn cục (domain/subdomain/IP/service/endpoint), có thể đồng bộ từ ScopeSentry. |
-| **Asset coverage graph (资产覆盖图)** | Sơ đồ lực (force-directed), highlight tài sản đã được test. |
-| **Traffic (流量录制)** | Toàn bộ request/response HTTP đi qua agent được ghi lại làm bằng chứng, có thể gắn (bind) vào 1 finding cụ thể. |
-| **Chat (人在环路对话)** | Giao diện hội thoại với `mainagent` — con người có thể theo dõi/can thiệp giữa chừng. |
-| **Agent management (Agent 管理)** | Cấu hình prompt, LLM, ngân sách chạy (run budget), bộ công cụ cho từng loại agent (planner/worker/retester…). |
-| **LLM config (LLM 配置)** | Cấu hình nhà cung cấp LLM, model, base URL, proxy. |
-| **Intercept / Approval (拦截审批)** | Hàng đợi phê duyệt thủ công trước khi agent thực thi công cụ nhạy cảm (guard). |
-| **System logs (后端日志)** | Log backend. |
-| **System settings (系统配置)** | Số worker song song, cập nhật phiên bản, proxy toàn cục, bật/tắt tự động gắn traffic vào finding. |
+| **Tasks** | Danh sách task pentest, chi tiết phiên làm việc (session) và các lần gọi công cụ (tool call) của từng agent. |
+| **Exploration Graph** | Trực quan hoá chuỗi goal → intent → fact → finding. |
+| **Findings** | Danh sách lỗ hổng phát hiện được, trạng thái xử lý, có thể **Retest** để xác nhận đã vá hay chưa. |
+| **Assets** | Đồ thị tài sản toàn cục (domain/subdomain/IP/service/endpoint), có thể đồng bộ từ ScopeSentry. |
+| **Asset coverage graph** | Sơ đồ lực (force-directed), highlight tài sản đã được test. |
+| **Traffic** | Toàn bộ request/response HTTP đi qua agent được ghi lại làm bằng chứng, có thể gắn (bind) vào 1 finding cụ thể. |
+| **Chat** | Giao diện hội thoại với `mainagent` — con người có thể theo dõi/can thiệp giữa chừng. |
+| **Agent management** | Cấu hình prompt, LLM, ngân sách chạy (run budget), bộ công cụ cho từng loại agent (planner/worker/retester…). |
+| **LLM config** | Cấu hình nhà cung cấp LLM, model, base URL, proxy. |
+| **Intercept / Approval** | Hàng đợi phê duyệt thủ công trước khi agent thực thi công cụ nhạy cảm (guard). |
+| **System logs** | Log backend. |
+| **System settings** | Số worker song song, cập nhật phiên bản, proxy toàn cục, bật/tắt tự động gắn traffic vào finding. |
 
-### Tính năng "复测" (Retest — kiểm tra lại lỗ hổng)
+### Tính năng "Retest" (kiểm tra lại lỗ hổng)
 
-Trong chi tiết task, tab **"复测" (Retest)** cho phép:
+Trong chi tiết task, tab **"Retests"** cho phép:
 1. Chọn 1 lỗ hổng đã tìm thấy trong task.
 2. Xem lại các lần xác nhận trước và bằng chứng kèm theo.
 3. Khởi tạo một **phiên agent "retester" độc lập** để kiểm tra lại, có thể
    ghi chú phiên bản đã vá / điều kiện test / giới hạn kiểm tra.
-4. Kết luận trả về 1 trong 3 trạng thái: **"仍可复现" (vẫn tái hiện được)**,
-   **"已修复" (đã vá)**, **"无法确认" (không xác định được)**.
+4. Kết luận trả về 1 trong 3 trạng thái: **"Still reproducible" (vẫn tái hiện được)**,
+   **"Fixed" (đã vá)**, **"Inconclusive" (không xác định được)**.
 
 Agent `retester` được tạo sẵn (có thể sửa prompt/LLM/ngân sách/tool trong
 Agent management). Nếu không gắn LLM riêng, nó dùng cấu hình LLM toàn cục
@@ -388,7 +388,7 @@ nhận traffic và xuất báo cáo vẫn hoạt động bình thường.
 
 ### Đồng bộ tài sản từ ScopeSentry
 
-Ở trang **"资产同步" (Asset Sync)**:
+Ở trang **"Asset sync"**:
 1. Điền địa chỉ và API Key của [ScopeSentry](https://github.com/Autumn-27/ScopeSentry).
 2. Chọn mục tiêu/loại tài sản cần đồng bộ (theo dự án hoặc theo task; domain /
    subdomain / IP / port / site / endpoint…).

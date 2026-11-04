@@ -14,7 +14,7 @@ export function StatTile({ label, value, hint, tone }: { label: string; value: s
   );
 }
 
-// useFormatBacklog 返回一个把积压毫秒数渲染成人看得懂量级的格式化函数。
+// useFormatBacklog returns a formatting function that renders the backlog in milliseconds as a human-readable magnitude.
 export function useFormatBacklog() {
   const t = useTranslations("systemNotifyStatTile");
   return (ms: number): string => {

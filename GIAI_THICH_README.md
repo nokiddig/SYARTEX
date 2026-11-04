@@ -20,7 +20,7 @@ viết bằng Go, frontend Next.js. Badge hiển thị phiên bản release mớ
 > (exploration graph), có phê duyệt người-trong-vòng-lặp (human-in-the-loop) và ghi lại
 > toàn bộ traffic. Đóng gói thành 1 binary hoặc 1 cụm Docker Compose."
 
-## 2. Mục "截图预览" (Ảnh chụp màn hình xem trước)
+## 2. Mục "Screenshot preview" (Ảnh chụp màn hình xem trước)
 
 Bảng ảnh minh hoạ các màn hình chính của UI: Dashboard, danh sách Task, chi tiết thực thi
 task (session/tool call), Đồ thị khám phá (Exploration Graph), Findings, Assets, Đồ thị
@@ -29,7 +29,7 @@ task (session/tool call), Đồ thị khám phá (Exploration Graph), Findings, 
 config, Intercept/Approval, System logs. Đây chỉ là ảnh demo UI, không có nội dung kỹ
 thuật cần làm theo.
 
-## 3. "审批记录详情" (Chi tiết bản ghi phê duyệt)
+## 3. "Approval record details" (Chi tiết bản ghi phê duyệt)
 
 Giải thích rằng cả 3 nơi hiển thị phê duyệt (trang "Approval records" toàn cục, tab
 "Intercept approvals" trong 1 task, và card phê duyệt trong khung chat) đều cho **mở
@@ -37,18 +37,18 @@ rộng xem chi tiết**. README ghi nhận bố cục UI này được tham kh�
 phê duyệt của dự án mã nguồn mở **AegisHook**, nhưng dùng lại component/theme riêng của
 ARTEX (không copy nguyên code).
 
-## 4. "资产同步（ScopeSentry）" — Đồng bộ tài sản
+## 4. "Asset sync (ScopeSentry)" — Đồng bộ tài sản
 
 ARTEX có thể kéo dữ liệu tài sản (domain/subdomain/IP/port/site/endpoint) thẳng từ công
 cụ recon **[ScopeSentry](https://github.com/Autumn-27/ScopeSentry)** mà không cần quét
 lại từ đầu:
-1. Vào trang "资产同步" (Asset Sync), điền địa chỉ + API Key của ScopeSentry.
+1. Vào trang "Asset sync", điền địa chỉ + API Key của ScopeSentry.
 2. Chọn phạm vi đồng bộ theo **dự án (project)** hoặc theo **task**, cùng loại tài sản
    muốn lấy.
 3. Nhập 1 lần — dữ liệu được gộp vào đúng company/scope tương ứng trong Asset Graph của
    ARTEX, agent dùng được ngay.
 
-## 5. "安装" (Cài đặt) — 5 cách cài
+## 5. "Installation" (Cài đặt) — 5 cách cài
 
 | Cách | Tóm tắt |
 |---|---|
@@ -64,7 +64,7 @@ README cũng ghi chú riêng về **Remote MCP kiểu SSE cũ**: server mở str
 /sse`, nhận JSON-RPC qua `/message?sessionId=...` — khi cấu hình trong System Settings
 điền URL là `/sse` và header `Authorization=Bearer <token>`.
 
-## 6. "更新升级" (Cập nhật/nâng cấp) — 5 cách
+## 6. "Updating" (Cập nhật/nâng cấp) — 5 cách
 
 Nguyên tắc chung: **cập nhật chỉ thay phần chương trình, không đụng dữ liệu** (Postgres
 volume, `./data` chứa `jwt.key`/SQLite, `./skills` đều giữ nguyên); schema DB tự migrate
@@ -86,15 +86,15 @@ idempotent mỗi lần khởi động (không cần chạy migration tay).
   `data/`.
 - **⑤ Build lại từ source**: giống cách cài ③ nhưng chạy sau `git pull`.
 
-## 7. "配置" (Cấu hình)
+## 7. "Configuration" (Cấu hình)
 
 - **Database**: `config.json` (field `database.host/port/user/password/dbname/sslmode`,
   hoặc 1 dòng DSN duy nhất), có thể override bằng biến môi trường `ARTEX_PG_DSN` (biến
   môi trường luôn thắng file).
 - **LLM**: set `ANTHROPIC_API_KEY` hoặc `OPENAI_API_KEY`, hoặc điền trực tiếp trong UI ở
-  trang "LLM 配置". Biến môi trường tuỳ chọn thêm: `ARTEX_LLM_PROVIDER` /
+  trang "LLM". Biến môi trường tuỳ chọn thêm: `ARTEX_LLM_PROVIDER` /
   `ARTEX_LLM_MODEL` / `ARTEX_LLM_BASE_URL` / `ARTEX_LLM_PROXY`.
-- **Số worker song song**: cấu hình trong "系统设置" (System Settings), mặc định 3
+- **Số worker song song**: cấu hình trong "System settings", mặc định 3
   worker/task.
 - **Tham số khởi động**: `./start.sh -addr :8787 -proxy :8788` — `-addr` là cổng
   frontend+API, `-proxy` là cổng của proxy ghi lại traffic; script chỉ truyền nguyên các
@@ -111,17 +111,17 @@ mở được. `NEXT_PUBLIC_SSE_BASE` chỉ cần khi SSE phải tách sang orig
 bị đóng băng vào bundle tĩnh lúc `next build`** — đặt lại lúc container chạy sẽ vô tác
 dụng, phải build lại.
 
-## 8. "开发" (Phát triển)
+## 8. "Development" (Phát triển)
 
-### Mục con: Phục hồi/kiểm tra lại lỗ hổng thủ công (复测 / Retest)
+### Mục con: Phục hồi/kiểm tra lại lỗ hổng thủ công (Retest)
 
 Giải thích chi tiết luồng Retest (đã mô tả ở các câu trả lời trước trong hội thoại này):
-chọn 1 finding → xem lịch sử kết luận + bằng chứng cũ → bấm "发起复测" (phát động retest),
+chọn 1 finding → xem lịch sử kết luận + bằng chứng cũ → bấm "Start retest" (phát động retest),
 điền tuỳ chọn phiên bản đã vá/điều kiện/giới hạn test → hệ thống tạo 1 **session Agent
 retester độc lập**. Agent `retester` được tạo sẵn từ lần khởi động đầu (sửa được
 prompt/LLM/budget/tool trong Agent management), dùng LLM riêng nếu có gán, không thì dùng
-config LLM toàn cục đang active. 3 kết luận có thể: **"仍可复现" (vẫn tái hiện được)**,
-**"已修复" (đã vá)**, **"无法确认" (không xác định được)** — chỉ kết luận "đã vá" mới
+config LLM toàn cục đang active. 3 kết luận có thể: **"Still reproducible" (vẫn tái hiện được)**,
+**"Fixed" (đã vá)**, **"Inconclusive" (không xác định được)** — chỉ kết luận "đã vá" mới
 **tự động** đổi trạng thái xử lý (disposition) của finding, các kết luận khác giữ nguyên.
 Nếu finding đang có 1 session retest chạy, bấm lại sẽ dùng chung session đó (không tạo
 trùng); chỉ tạo mới được khi session cũ đã stop/fail hoặc sau khi service restart. Giới
@@ -140,7 +140,7 @@ hạn hiện tại: lịch sử retest chỉ xem được trong chi tiết findi
 - Xem UI không cần backend thật: `cd web && NEXT_PUBLIC_MOCK=1 npm run dev` — toàn bộ data
   là giả, hữu ích để xem giao diện mà không cần dựng Postgres/LLM key.
 
-## 9. "系统技术架构" (Kiến trúc kỹ thuật hệ thống) — phần dài và quan trọng nhất
+## 9. "System architecture" (Kiến trúc kỹ thuật hệ thống) — phần dài và quan trọng nhất
 
 README gọi đây là hệ thống **đa agent điều khiển bởi LLM**: 1 backend Go duy nhất (nhúng
 sẵn frontend Next.js) + PostgreSQL; năng lực agent lấy từ SDK
@@ -260,7 +260,7 @@ Kết luận của README: nhờ 2 cơ chế này (trao đổi quá trình + tod
 agent là stateless" — đây được nêu là **điểm mấu chốt** giúp ARTEX tự chủ đi hết một chuỗi
 khai thác nhiều bước.
 
-## 10. "交流群" (Nhóm trao đổi)
+## 10. "Community group" (Nhóm trao đổi)
 
 Quét QR theo dõi 1 tài khoản WeChat Official Account tên **"SecSentry"**, nhắn tin riêng
 trong đó để được thêm vào group trao đổi. (Lưu ý: đây là group tiếng Trung, dành cho người
@@ -273,7 +273,7 @@ dùng Trung Quốc; không có kênh tiếng Anh/Việt chính thức được n
 - Tham khảo thêm: **oritera/Cairn** (một dự án khác có kiến trúc tương tự, dùng làm nguồn
   tham khảo khi thiết kế ARTEX).
 
-## 12. "许可与免责声明" (Giấy phép & Miễn trừ trách nhiệm) — PHẦN QUAN TRỌNG NHẤT
+## 12. "License and disclaimer" (Giấy phép & Miễn trừ trách nhiệm) — PHẦN QUAN TRỌNG NHẤT
 
 ### Giấy phép mã nguồn mở
 

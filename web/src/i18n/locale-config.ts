@@ -2,9 +2,10 @@ export const LOCALES = ["zh", "en"] as const;
 
 export type Locale = (typeof LOCALES)[number];
 
-export const DEFAULT_LOCALE: Locale = "zh";
+export const DEFAULT_LOCALE: Locale = "en";
 
 export const LOCALE_LABELS: Record<Locale, string> = {
+  // intentionally Chinese: language endonym shown in the language switcher
   zh: "中文",
   en: "English",
 };

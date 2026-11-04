@@ -291,7 +291,7 @@ function JudgeCard() {
 
   return (
     <div className="space-y-4">
-      {/* 启用开关 —— 独立高亮条 */}
+      {/* Enable switch - standalone highlighted bar */}
       <div
         className={`flex items-center justify-between gap-3 rounded-lg border px-4 py-3 ${
           cfg.enabled ? "border-violet-400/50 bg-violet-50/40 dark:bg-violet-950/20" : "bg-muted/40"
@@ -312,7 +312,7 @@ function JudgeCard() {
         </div>
       </div>
 
-      {/* 审批 Token 用量统计(全局累计,独立于各模型配置) */}
+      {/* Approval token usage stats (global cumulative, independent of each model configuration) */}
       {cfg.enabled && usage && (
         <Card>
           <CardContent className="p-4">
@@ -348,7 +348,7 @@ function JudgeCard() {
 
       {cfg.enabled && (
         <div className="grid gap-4 lg:grid-cols-5">
-          {/* 左:提示词编辑器(直接展开,主区域) */}
+          {/* Left: prompt editor (expanded directly, main area) */}
           <Card className="lg:col-span-3">
             <CardContent className="flex h-full flex-col gap-2 p-4">
               <div className="flex items-center justify-between">
@@ -371,7 +371,7 @@ function JudgeCard() {
             </CardContent>
           </Card>
 
-          {/* 右:判定参数(设置栏) */}
+          {/* Right: judgment parameters (settings column) */}
           <Card className="lg:col-span-2">
             <CardContent className="space-y-5 p-4">
               <div className="space-y-4">
@@ -383,7 +383,7 @@ function JudgeCard() {
                       <SelectItem value={FOLLOW_ACTIVE}>{t("followActive")}</SelectItem>
                       {profiles.map((p) => (
                         <SelectItem key={p.id} value={p.id}>
-                          {p.name}（{p.model}）
+                          {p.name} ({p.model})
                         </SelectItem>
                       ))}
                     </SelectContent>
@@ -462,7 +462,7 @@ export default function InterceptPage() {
   const [form, setForm]       = React.useState<RuleForm>(defaultForm());
   const [saving, setSaving]   = React.useState(false);
   const [regexErr, setRegexErr] = React.useState("");
-  const [regexWarn, setRegexWarn] = React.useState(false); // true = JS 无法解析但可能是合法 Go 语法
+  const [regexWarn, setRegexWarn] = React.useState(false); // true = JS cannot parse it but it may be valid Go syntax
 
   // ---- tool scope dialog ----
   const [scopeOpen, setScopeOpen]       = React.useState(false);
@@ -470,7 +470,7 @@ export default function InterceptPage() {
   const [enabledTools, setEnabledTools] = React.useState<Set<string>>(new Set());
   const [scopeLoading, setScopeLoading] = React.useState(false);
   const [scopeSaving, setScopeSaving]   = React.useState(false);
-  const [scopeTools, setScopeTools]     = React.useState<string[]>([]); // 页头信息条:当前进入拦截的工具
+  const [scopeTools, setScopeTools]     = React.useState<string[]>([]); // page header info bar: tools currently subject to interception
 
   // ---- data ----
 
@@ -479,7 +479,7 @@ export default function InterceptPage() {
       const cfg = await api.interceptGetToolConfig();
       setScopeTools(cfg.enabled_tools);
     } catch {
-      // 信息条非关键,失败静默
+      // the info bar is non-critical; fail silently
     }
   }, []);
 
@@ -503,8 +503,8 @@ export default function InterceptPage() {
       setRegexErr("");
       setRegexWarn(false);
     } catch {
-      // JS RegExp 不支持 Go RE2 扩展语法（如 (?i) 内联 flag）。
-      // 这里只是预览校验失败，不代表 Go 端无效；交给服务端最终验证。
+      // JS RegExp does not support Go RE2 extension syntax (such as the (?i) inline flag).
+      // This is only a preview validation failure and does not mean it is invalid on the Go side; leave it to the server for final validation.
       setRegexErr("");
       setRegexWarn(true);
     }
@@ -631,7 +631,7 @@ export default function InterceptPage() {
         </div>
       </div>
 
-      {/* ---- 拦截范围信息条（规则匹配与模型兜底共用：不在范围内的工具两者都不介入）---- */}
+      {/* ---- Interception scope info bar (shared by rule matching and the model fallback: tools outside the scope are not touched by either) ---- */}
       <div
         className={`flex items-center justify-between gap-3 rounded-lg border px-4 py-2.5 ${
           scopeTools.length === 0
@@ -649,8 +649,8 @@ export default function InterceptPage() {
           ) : (
             <>
               <Badge variant="secondary" className="shrink-0">{t("toolCount", { count: scopeTools.length })}</Badge>
-              <span className="truncate text-muted-foreground" title={scopeTools.join("、")}>
-                {scopeTools.join("、")}
+              <span className="truncate text-muted-foreground" title={scopeTools.join(", ")}>
+                {scopeTools.join(", ")}
               </span>
             </>
           )}
@@ -672,7 +672,7 @@ export default function InterceptPage() {
           <TabsTrigger value="judge">{t("tabJudge")}</TabsTrigger>
         </TabsList>
 
-        {/* ---- tab: 拦截规则 ---- */}
+        {/* ---- tab: Interception rules ---- */}
         <TabsContent value="rules" className="mt-4 flex flex-col gap-4">
           <div className="flex items-center justify-between gap-3">
             <p className="text-xs text-muted-foreground">
@@ -768,7 +768,7 @@ export default function InterceptPage() {
           </Card>
         </TabsContent>
 
-        {/* ---- tab: 模型配置 ---- */}
+        {/* ---- tab: Model configuration ---- */}
         <TabsContent value="judge" className="mt-4">
           <JudgeCard />
         </TabsContent>

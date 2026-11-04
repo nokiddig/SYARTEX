@@ -20,7 +20,7 @@
   "releaseNotes": "Release notes",
   "modeDocker": "Docker",
   "modeStandalone": "Standalone",
-  "unreachable": "Can't reach GitHub: {error}　Configure a global proxy above and try again.",
+  "unreachable": "Can't reach GitHub: {error} Configure a global proxy above and try again.",
   "noAsset": "{latest} has no release package for {os}/{arch} (missing {asset}), so it can't be updated automatically.",
   "willDownload": "Will download <mono>{asset}</mono>{size}, verify its SHA256 and run a smoke test before replacing the current version; on failure the current version is kept automatically.",
   "sizeSuffix": " ({size})",

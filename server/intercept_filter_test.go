@@ -34,7 +34,7 @@ func TestInterceptFilterHTTP(t *testing.T) {
 		t.Fatal(err)
 	}
 	for _, state := range []string{"pending", "allowed", "denied", "timeout"} {
-		if _, err := d.CreateDecidedIntercept(0, 0, scope, "test", "Bash", []byte(`{}`), state, "[模型] fixture"); err != nil {
+		if _, err := d.CreateDecidedIntercept(0, 0, scope, "test", "Bash", []byte(`{}`), state, "[模型] fixture"); err != nil { // intentionally Chinese: "[模型]" is the persisted model-decision marker
 			t.Fatal(err)
 		}
 	}

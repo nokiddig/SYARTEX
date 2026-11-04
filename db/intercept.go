@@ -37,7 +37,7 @@ type InterceptPending struct {
 	ToolInput      json.RawMessage `json:"tool_input"`
 	Status         string          `json:"status"`
 	DecisionSource string          `json:"decision_source"`
-	Reason         string          `json:"reason"` // 规则 message 或模型判定理由(前缀 [模型])
+	Reason         string          `json:"reason"` // rule message or model verdict reason (prefixed with [模型])
 	DecidedAt      *time.Time      `json:"decided_at"`
 	CreatedAt      time.Time       `json:"created_at"`
 }
@@ -226,6 +226,7 @@ func scanInterceptApprovalRow(rows interface{ Scan(...any) error }, r *Intercept
 }
 
 // Keep legacy rows without decision_source consistent with their displayed source.
+// intentionally Chinese: "[模型]" is the persisted marker of model-made decisions, matched by LIKE below.
 const approvalDecisionSource = `COALESCE(NULLIF(ip.decision_source,''), CASE
  WHEN ip.rule_id IS NOT NULL THEN 'rule'
  WHEN ip.reason LIKE '[模型]%' THEN 'model' ELSE 'unknown' END)`
@@ -248,6 +249,7 @@ func interceptSource(ruleID int64, reason string) string {
 	if ruleID != 0 {
 		return "rule"
 	}
+	// intentionally Chinese: "[模型]" is the persisted marker of model-made decisions (see approvalDecisionSource).
 	if strings.HasPrefix(reason, "[模型]") {
 		return "model"
 	}

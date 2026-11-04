@@ -8,6 +8,7 @@ import (
 
 func TestTruncateUTF8PreservesValidEncoding(t *testing.T) {
 	t.Parallel()
+	// Intentionally Chinese: multi-byte runes ("额度不足" = "quota insufficient") test that truncation never splits a UTF-8 sequence.
 	input := strings.Repeat("额度不足", 400)
 	got := truncateUTF8(input, 1000)
 	if len(got) > 1000 {

