@@ -85,7 +85,7 @@ Thư mục `./skills` và `./data` được bind-mount để giữ dữ liệu k
 Các biến trong `.env`:
 
 ```env
-ARTEX_TAG=latest
+ARTEX_TAG=local
 POSTGRES_USER=artex
 POSTGRES_PASSWORD=change-me-please
 POSTGRES_DB=artex
